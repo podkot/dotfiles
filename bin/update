@@ -5,7 +5,7 @@ source "$DOTFILES/tilde/bashrc"
 
 # dotfiles
 header "Updating dotfiles..."
-pushd "$HOME"
+pushd "$DOTFILES"
 git pull
 $DOTFILES/sync
 source "$HOME/.bashrc"

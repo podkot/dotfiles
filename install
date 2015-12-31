@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 git clone https://github.com/podkot/dotfiles.git ~/dotfiles
+mv ~/.bashrc ~/.bashrc.bak
 ~/dotfiles/sync
 source ~/.bashrc
 setup
