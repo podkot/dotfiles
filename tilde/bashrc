@@ -84,6 +84,7 @@ alias -- -="cd -"
 
 # misc aliases
 alias x="exit"
+alias mc="mc -S xoria256"
 alias npmlsg="npm ls -g --depth=0"
 alias psg="ps auxw | grep"
 alias 777="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 0666 {} ';'"
