@@ -46,6 +46,10 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'flazz/vim-colorschemes'
 colorscheme Monokai
 
+if iCanHazVundle == 0
+    :BundleInstall
+endif
+
 """"""""
 if has('autocmd')
   filetype plugin indent on
