@@ -1,0 +1,19 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+charset = utf-8
+
+[Makefile]
+indent_style = tab
+
+[*.{yaml,уml,md}]
+# two trailing spaces become <br> in markdown. and markdown may be used inside of yaml
+trim_trailing_whitespace = false
+
+[*.{jade,coffee,styl,yaml,yml}]
+indent_size = 2

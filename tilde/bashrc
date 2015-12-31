@@ -1,0 +1,111 @@
+export DOTFILES="$HOME/dotfiles"
+export PATH="$PATH:$DOTFILES/bin"
+
+source "$DOTFILES/inc/functions.sh"
+
+if [ `uname` == 'Darwin' ]; then
+    source "$DOTFILES/inc/bashrc-mac.sh"
+else
+    source "$DOTFILES/inc/bashrc-linux.sh"
+fi
+
+# bash
+tty -s && stty werase ^- 2>/dev/null # this is for delete words by ^W
+
+# colors
+export TERM=xterm-256color
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    colorflag="--color"
+else # OS X `ls`
+    colorflag="-G"
+fi
+export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+# colored ls
+alias l="ls -lF ${colorflag}"
+alias la="ls -laF ${colorflag}"
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias ls="command ls ${colorflag}"
+
+
+# bash-it
+if [[ -d "$DOTFILES/lib/bash_it" ]]; then
+    export BASH_IT="$DOTFILES/lib/bash_it"
+    export CUSTOM_THEME_DIR="$DOTFILES/etc/bash-it"
+    export BASH_IT_THEME='powerline-podkot'
+    # Your place for hosting Git repos. I use this for private repos.
+    # export GIT_HOSTING='git@git.domain.com'
+    # Don't check mail when opening terminal.
+    unset MAILCHECK
+    # Set this to the command you use for todo.txt-cli
+    # export TODO="t"
+    # Set this to false to turn off version control status checking within the prompt for all themes
+    export SCM_CHECK=true
+    source $BASH_IT/bash_it.sh
+fi
+
+# perlbrew
+[[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source "$HOME/perl5/perlbrew/etc/bashrc"
+
+# rvm
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+    export PATH="$HOME/.rvm/bin:$PATH"
+    source "$HOME/.rvm/scripts/rvm"
+fi
+
+# composer
+[[ -d "$HOME/.composer/vendor/bin" ]] && export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+# grunt
+if command_exists grunt; then
+    # Make Grunt print stack traces by default
+    alias grunt="grunt --stack"
+    alias dgrunt="node-debug -p 8888 $(which grunt)"
+fi
+
+# hub
+if command_exists hub; then
+    eval "$(hub alias -s)"
+fi
+
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# misc aliases
+alias x="exit"
+alias npmlsg="npm ls -g --depth=0"
+alias psg="ps auxw | grep"
+alias 777="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 0666 {} ';'"
+alias 666="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 0666 {} ';'"
+alias 755="find . -type d -exec chmod 0755 {} ';' && find . -type f -exec chmod 0644 {} ';'"
+alias 644="find . -type d -exec chmod 0755 {} ';' && find . -type f -exec chmod 0644 {} ';'"
+alias own="sudo chown -R `whoami`"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
+
+# perlbrew data
+alias perlbrew-save="perlbrew list-modules > $DOTFILES/data/perlbrew.txt"
+alias perlbrew-restore="cat $DOTFILES/data/perlbrew.txt | cpanm"
+
+# configs
+alias zshrc="$EDITOR ~/.zshrc"
+alias hosts="$EDITOR /etc/hosts"
+alias dotfiles="$EDITOR $DOTFILES"
+
+# srs
+[[ -s "$HOME/srs.sh" ]] && source "$HOME/srs.sh"

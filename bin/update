@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+export DOTFILES="$HOME/dotfiles"
+source "$DOTFILES/tilde/bashrc"
+
+# dotfiles
+header "Updating dotfiles..."
+pushd "$HOME"
+git pull
+$DOTFILES/sync
+source "$HOME/.bashrc"
+popd
+echo
+
+# perlbrew reinstall:
+# perlbrew list-modules | perlbrew exec --with perl-5.20.0@foo-project cpanm
+
+if [ `uname` == 'Darwin' ]; then
+    source $DOTFILES/inc/update-mac.sh
+# else
+fi
+
+# powerline fonts
+[[ -d $DOTFILES/lib/fonts/ ]] && pushd $DOTFILES/lib/fonts && git pull && popd
+
+# bash-it
+[[ -d $DOTFILES/lib/bash-it/ ]] && pushd $DOTFILES/lib/bash-it && git pull && popd
+
+# NPM
+if command_exists npm; then
+    header "Updating NPM..."
+    npm update npm -g
+    npm update -g
+    echo
+fi
+
+# rvm
+if command_exists rvm; then
+    header "Updating RVM..."
+    rvm get head
+    rvm reload
+    rvm get stable
+    echo
+fi;
+
+# gems
+if command_exists gem; then
+    header "Updating Ruby gems..."
+    # sudo -v
+    gem update
+    echo
+fi
