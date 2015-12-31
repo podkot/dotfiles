@@ -14,40 +14,35 @@
     endif
     set rtp+=~/.vim/bundle/vundle/
     call vundle#begin()
-    Vundle 'VundleVim/Vundle.vim'
-    "Add your bundles here
-    Vundle 'Syntastic' "uber awesome syntax and errors highlighter
-    Vundle 'altercation/vim-colors-solarized' "T-H-E colorscheme
-    Vundle 'https://github.com/tpope/vim-fugitive' "So awesome, it should be illegal
     "...All your other bundles...
     if iCanHazVundle == 0
-        echo "Installing Vundles, please ignore key map error messages"
-        echo ""
+        Vundle 'VundleVim/Vundle.vim'
         :VundleInstall
     endif
 " Setting up Vundle - the vim plugin bundler end
 
-
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+call vundle#begin()
 
-Bundle 'tpope/vim-surround'
-Bundle 'gcmt/breeze.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-surround'
+Plugin 'gcmt/breeze.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'mattn/emmet-vim'
+Plugin 'flazz/vim-colorschemes'
 
-" Color Themes
-Bundle 'flazz/vim-colorschemes'
-colorscheme Monokai
+call vundle#end()
 
 if iCanHazVundle == 0
-    :BundleInstall
+    :PluginInstall
 endif
 
 """"""""
@@ -57,6 +52,8 @@ endif
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
+
+colorscheme Monokai
 
 " Use :help 'option' to see the documentation for the given option.
 set autoindent
@@ -141,6 +138,22 @@ let g:did_UltiSnips_vim_after = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+" NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" syntactic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
 "
 " Basic shortcuts definitions
 "  most in visual mode / selection (v or ⇧ v)
@@ -177,6 +190,9 @@ nnoremap <C-t>  :tabnew<CR>
 inoremap <C-t>  <Esc>:tabnew<CR>i
 nnoremap <C-k>  :tabclose<CR>
 inoremap <C-k>  <Esc>:tabclose<CR>i
+" TODO NERDTree
+" nnoremap <C-0>  :NERDTreeToggle<CR>
+" inoremap <C-0>  <Esc>:NERDTreeToggle<CR>i
 
 " lazy ':'
 map \ :
