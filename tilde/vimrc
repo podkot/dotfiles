@@ -2,6 +2,32 @@
 "               http://github.com/grigio/vim-sublime
 " Best view with a 256 color terminal and Powerline fonts
 
+" Setting up Vundle - the vim plugin bundler
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle.."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+        let iCanHazVundle=0
+    endif
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#begin()
+    Vundle 'VundleVim/Vundle.vim'
+    "Add your bundles here
+    Vundle 'Syntastic' "uber awesome syntax and errors highlighter
+    Vundle 'altercation/vim-colors-solarized' "T-H-E colorscheme
+    Vundle 'https://github.com/tpope/vim-fugitive' "So awesome, it should be illegal
+    "...All your other bundles...
+    if iCanHazVundle == 0
+        echo "Installing Vundles, please ignore key map error messages"
+        echo ""
+        :VundleInstall
+    endif
+" Setting up Vundle - the vim plugin bundler end
+
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -88,7 +114,7 @@ set nowritebackup
 set noswapfile
 set fileformats=unix,dos,mac
 
-" exit insert mode 
+" exit insert mode
 inoremap <C-c> <Esc>
 
 set completeopt=menuone,longest,preview
@@ -98,7 +124,7 @@ set completeopt=menuone,longest,preview
 "
 
 " CtrlP
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/* 
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 " Ultisnip
 " NOTE: <f1> otherwise it overrides <tab> forever

@@ -2,6 +2,7 @@
 
 git clone https://github.com/podkot/dotfiles.git ~/dotfiles
 mv ~/.bashrc ~/.bashrc.bak
+mv ~/.bash_profile ~/.bash_profile.bak
 ~/dotfiles/sync
-source ~/.bashrc
-setup
+source ~/dotfiles/tilde/bashrc
+~/dotfiles/bin/setup

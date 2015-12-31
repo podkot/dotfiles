@@ -41,12 +41,12 @@ if command_exists rvm; then
     rvm reload
     rvm get stable
     echo
-fi;
 
-# gems
-if command_exists gem; then
-    header "Updating Ruby gems..."
-    # sudo -v
-    gem update
-    echo
+    # gems
+    if command_exists gem; then
+        header "Updating Ruby gems..."
+        # sudo -v
+        gem update
+        echo
+    fi
 fi
