@@ -4,6 +4,8 @@ export EDITOR="subl"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PKG_CONFIG_PATH="`brew --prefix cairo`/lib/pkgconfig:/usr/local/opt/pixman/lib/pkgconfig:/usr/local/opt/fontconfig/lib/pkgconfig:/usr/local/opt/freetype/lib/pkgconfig:/usr/local/opt/libpng/lib/pkgconfig:/usr/X11/lib/pkgconfig"
 
+export HOMEBREW_CASK_OPTS='--appdir=/Applications'
+
 # nvm
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
@@ -27,10 +29,6 @@ source $(brew --prefix php-version)/php-version.sh && php-version 5
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-# brew data
-alias brew-save="brew ls > $DOTFILES/data/brew-ls.txt && brew tap > $DOTFILES/data/brew-tap.txt"
-alias brew-restore="cat $DOTFILES/data/brew-tap.txt | brew tap && cat $DOTFILES/data/brew-ls.txt | brew install"
 
 # configs
 alias phpini="$EDITOR /usr/local/etc/php/5.6/php.ini" # php -i | grep 'Configuration File'

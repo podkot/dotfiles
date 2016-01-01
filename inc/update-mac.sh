@@ -15,5 +15,6 @@ header "Updating Homebrew..."
 brew update
 brew upgrade --all
 brew cleanup
+brew cask cleanup
 brew prune
 echo
