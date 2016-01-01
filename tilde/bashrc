@@ -99,10 +99,6 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
 
-# perlbrew data
-alias perlbrew-save="perlbrew list-modules > $DOTFILES/data/perlbrew.txt"
-alias perlbrew-restore="cat $DOTFILES/data/perlbrew.txt | cpanm"
-
 # configs
 alias zshrc="$EDITOR ~/.zshrc"
 alias hosts="$EDITOR /etc/hosts"

@@ -19,6 +19,7 @@ else
     header "Installing perlbrew..."
     \curl -L http://install.perlbrew.pl | bash
     perlbrew install perl-5.16.3
+    cat $DOTFILES/data/perlbrew.txt | cpanm
 fi
 
 # nvm
