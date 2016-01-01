@@ -13,3 +13,5 @@ while on mac, `xcode-select --install` first. then:
 - [powerline/fonts](https://github.com/powerline/fonts)
 - [grigio/vim-sublime](https://github.com/grigio/vim-sublime)
 - [Bash-it/bash-it](https://github.com/Bash-it/bash-it)
+- [github/gitignore](https://github.com/github/gitignore)
+- and many more.
