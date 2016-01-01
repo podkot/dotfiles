@@ -44,6 +44,7 @@ if command_exists npm ; then
     # npm install -g docpad
     npm install -g npm-check-updates
     npm install -g node-inspector
+    npm install -g iron-node
     npm install -g karma-cli
     npm install -g github-release-from-changelog
 fi
