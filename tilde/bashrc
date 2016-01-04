@@ -66,6 +66,7 @@ if command_exists grunt; then
     # Make Grunt print stack traces by default
     alias grunt="grunt --stack"
     alias dgrunt="node-debug -p 8888 $(which grunt)"
+    alias igrunt="iron-node $(which grunt)"
 fi
 
 # hub

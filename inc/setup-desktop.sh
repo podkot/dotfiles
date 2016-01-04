@@ -47,6 +47,13 @@ if command_exists npm ; then
     npm install -g iron-node
     npm install -g karma-cli
     npm install -g github-release-from-changelog
+    npm install -g flow-bin
+fi
+
+# pip
+if command_exists pip ; then
+    pip install -U codeintel
+    pip install -U licen
 fi
 
 # rvm
