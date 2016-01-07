@@ -3,7 +3,7 @@ export PATH="$PATH:$DOTFILES/bin"
 
 source "$DOTFILES/inc/functions.sh"
 
-if [ `uname` == 'Darwin' ]; then
+if [[ `uname` == 'Darwin' ]]; then
     source "$DOTFILES/inc/bashrc-mac.sh"
 else
     source "$DOTFILES/inc/bashrc-linux.sh"
@@ -52,14 +52,13 @@ fi
 # perlbrew
 [[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source "$HOME/perl5/perlbrew/etc/bashrc"
 
-# rvm
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-    export PATH="$HOME/.rvm/bin:$PATH"
-    source "$HOME/.rvm/scripts/rvm"
-fi
-
 # composer
 [[ -d "$HOME/.composer/vendor/bin" ]] && export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+# fuck
+if command_exists thefuck; then
+    eval $(thefuck --alias)
+fi
 
 # grunt
 if command_exists grunt; then
@@ -68,12 +67,6 @@ if command_exists grunt; then
     alias dgrunt="node-debug -p 8888 $(which grunt)"
     alias igrunt="iron-node $(which grunt)"
 fi
-
-# hub
-if command_exists hub; then
-    eval "$(hub alias -s)"
-fi
-
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."

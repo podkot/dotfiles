@@ -37,6 +37,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'mattn/emmet-vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'rking/ag.vim'
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -157,6 +158,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" ag
+let g:ag_working_path_mode="r"
 
 "
 " Basic shortcuts definitions

@@ -39,6 +39,7 @@ CPAN::Meta
 CPAN::Meta::Check
 CPAN::Meta::Requirements
 CPAN::Meta::YAML
+CPAN::outdated
 Cache::Cache
 Cache::Memcached::Fast
 Canary::Stability
@@ -688,6 +689,7 @@ WWW::Sitemap::XML
 WWW::Wappalyzer
 WWW::Yahoo::InboundLinks
 WWW::Yandex::TIC
+Want
 XML::Declare
 XML::Fast
 XML::Hash::LX

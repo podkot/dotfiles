@@ -12,11 +12,9 @@ source "$HOME/.bashrc"
 popd
 echo
 
-# perlbrew reinstall:
-# perlbrew list-modules | perlbrew exec --with perl-5.20.0@foo-project cpanm
-
-if [ `uname` == 'Darwin' ]; then
+if [[ `uname` == 'Darwin' ]]; then
     source $DOTFILES/inc/update-mac.sh
+    source $DOTFILES/inc/update-desktop.sh
 # else
 fi
 
@@ -26,27 +24,16 @@ fi
 # bash-it
 [[ -d $DOTFILES/lib/bash-it/ ]] && pushd $DOTFILES/lib/bash-it && git pull && popd
 
-# NPM
-if command_exists npm; then
-    header "Updating NPM..."
-    npm update npm -g
-    npm update -g
-    echo
+# bash-it plugins
+if command_exists bash-it ; then
+    bash-it plugin disable all
+    bash-it plugin enable alias-completion
+    bash-it plugin enable base
+    bash-it plugin enable fzf
+    bash-it plugin enable hub
+    bash-it plugin enable nvm
+    bash-it plugin enable rvm
 fi
 
-# rvm
-if command_exists rvm; then
-    header "Updating RVM..."
-    rvm get head
-    rvm reload
-    rvm get stable
-    echo
-
-    # gems
-    if command_exists gem; then
-        header "Updating Ruby gems..."
-        # sudo -v
-        gem update
-        echo
-    fi
-fi
+# vim
+vim +PluginInstall +qall

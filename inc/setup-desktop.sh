@@ -22,40 +22,6 @@ else
     cat $DOTFILES/data/perlbrew.txt | cpanm
 fi
 
-# nvm
-if command_exists nvm ; then
-    header "Installing node..."
-    nvm install stable
-    nvm use stable
-    nvm alias default stable
-fi
-
-# npm
-if command_exists npm ; then
-    header "Installing npm packages..."
-    npm config set loglevel warn
-    npm config set save-prefix ''
-    npm install -g npm
-    npm install -g grunt-cli
-    # npm install -g yo
-    npm install -g jshint
-    npm install -g jscs
-    npm install -g bower
-    # npm install -g docpad
-    npm install -g npm-check-updates
-    npm install -g node-inspector
-    npm install -g iron-node
-    npm install -g karma-cli
-    npm install -g github-release-from-changelog
-    npm install -g flow-bin
-fi
-
-# pip
-if command_exists pip ; then
-    pip install -U codeintel
-    pip install -U licen
-fi
-
 # rvm
 if command_exists rvm ; then
     echo "RVM already installed"
