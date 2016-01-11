@@ -33,6 +33,10 @@ In the quickfix window, you can use:
 <kbd>T</kbd> to open in new tab silently  
 <kbd>q</kbd> to close the quickfix window  
 
+## todo
+[ ] how to `brew cask upgrade`
+[ ] rvm updater writes to .bash_profile and .bashrc
+
 ## sources
 
 - [sapegin/dotfiles](https://github.com/sapegin/dotfiles)

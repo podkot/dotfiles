@@ -55,9 +55,9 @@ fi
 # rvm
 if command_exists rvm; then
     header "Updating RVM..."
-    rvm get head
-    rvm reload
+    # rvm get head
     rvm get stable
+    rvm reload
     echo
 
     # gems

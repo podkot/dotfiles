@@ -26,13 +26,13 @@ fi
 
 # bash-it plugins
 if command_exists bash-it ; then
-    bash-it plugin disable all
-    bash-it plugin enable alias-completion
-    bash-it plugin enable base
-    bash-it plugin enable fzf
-    bash-it plugin enable hub
-    bash-it plugin enable nvm
-    bash-it plugin enable rvm
+    bash-it disable plugin all
+    bash-it enable plugin alias-completion
+    bash-it enable plugin base
+    bash-it enable plugin fzf
+    bash-it enable plugin hub
+    bash-it enable plugin nvm
+    bash-it enable plugin rvm
 fi
 
 # vim
