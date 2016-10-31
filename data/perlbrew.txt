@@ -128,6 +128,7 @@ Class::Tiny
 Class::Unload
 Class::Virtual
 Class::XSAccessor
+ClickHouse
 Clone
 Clone::PP
 Config::Any
@@ -194,6 +195,7 @@ Data::Dump::Streamer
 Data::Dumper::Concise
 Data::Entropy
 Data::Float
+Data::GUID
 Data::IEEE754
 Data::OptList
 Data::Page
