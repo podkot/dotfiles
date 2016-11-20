@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # php-version
-source $(brew --prefix php-version)/php-version.sh && php-version 5
+# source $(brew --prefix php-version)/php-version.sh && php-version 5
 
 
 export EDITOR="subl"
@@ -16,8 +16,19 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # configs
-alias phpini="$EDITOR /usr/local/etc/php/5.6/php.ini" # php -i | grep 'Configuration File'
+alias phpini="$EDITOR /usr/local/etc/php/7.0/php.ini" # php -i | grep 'Configuration File'
 alias vhosts="$EDITOR /usr/local/etc/apache2/2.4/extra/httpd-vhosts.conf"
+
+# npm
+alias ni='npm install'
+alias nis='npm install --save'
+alias nid='npm install --save-dev'
+alias nig='npm install --global'
+alias nt='npm test'
+alias nit='npm install && npm test'
+alias nk='npm link'
+alias nr='npm run'
+alias nf='npm cache clean && rm -rf node_modules && npm install'
 
 # servers
 alias apache-conf="$EDITOR /usr/local/etc/apache2/2.4/httpd.conf" # httpd -V | grep 'SERVER_CONFIG_FILE'

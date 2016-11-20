@@ -13,9 +13,13 @@
 
 # pip
 if command_exists pip ; then
-    pip install -U codeintel
+    pip install -U pip
     pip install -U licen
-    pip install -U thefuck
+    # pip install -U thefuck
+fi
+
+if command_exists pip3 ; then
+    pip3 install -U pyyaml
 fi
 
 # nvm
@@ -34,8 +38,6 @@ if command_exists npm ; then
     npm install -g npm
     npm install -g grunt-cli
     # npm install -g yo
-    npm install -g jshint
-    npm install -g jscs
     npm install -g bower
     # npm install -g docpad
     npm install -g npm-check-updates
@@ -44,6 +46,14 @@ if command_exists npm ; then
     npm install -g karma-cli
     npm install -g github-release-from-changelog
     npm install -g flow-bin
+    npm install -g mocha
+    npm install -g coffee
+    npm install -g coffeelint
+    npm install -g gulp
+    npm install -g webpack
+    npm install -g eslint
+    npm install -g jade-lint
+    npm install -g yarn
 fi
 # if command_exists npm; then
 #     header "Updating NPM..."
@@ -68,5 +78,21 @@ if command_exists rvm; then
         echo
     fi
 fi
+
+# composer
+if command_exists composer; then
+    header "Updating composer packages..."
+
+    composer global require phpdocumentor/phpdocumentor
+    composer global require phpmd/phpmd
+    composer global require squizlabs/php_codesniffer
+    composer global require wp-cli/wp-cli
+    composer global require "aaemnnosttv/wp-cli-dotenv-command:^1.0"
+    composer global require mkusher/padawan
+
+    composer global update
+    echo
+fi
+
 
 

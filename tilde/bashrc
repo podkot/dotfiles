@@ -1,3 +1,11 @@
+# export PROFILE_BASHRC=1
+
+if [[ $PROFILE_BASHRC ]]; then
+    PS4='+ $(date "+%s.%N")\011 '
+    exec 3>&2 2>/tmp/bashstart.$$.log
+    set -x
+fi
+
 export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 
@@ -56,9 +64,9 @@ fi
 [[ -d "$HOME/.composer/vendor/bin" ]] && export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # fuck
-if command_exists thefuck; then
-    eval $(thefuck --alias)
-fi
+# if command_exists thefuck; then
+#     eval $(thefuck --alias)
+# fi
 
 # grunt
 if command_exists grunt; then
@@ -85,6 +93,10 @@ alias 777="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 
 alias 666="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 0666 {} ';'"
 alias 755="find . -type d -exec chmod 0755 {} ';' && find . -type f -exec chmod 0644 {} ';'"
 alias 644="find . -type d -exec chmod 0755 {} ';' && find . -type f -exec chmod 0644 {} ';'"
+alias sudo777="find . -type d -exec sudo chmod 0777 {} ';' && find . -type f -exec sudo chmod 0666 {} ';'"
+alias sudo666="find . -type d -exec sudo chmod 0777 {} ';' && find . -type f -exec sudo chmod 0666 {} ';'"
+alias sudo755="find . -type d -exec sudo chmod 0755 {} ';' && find . -type f -exec sudo chmod 0644 {} ';'"
+alias sudo644="find . -type d -exec sudo chmod 0755 {} ';' && find . -type f -exec sudo chmod 0644 {} ';'"
 alias own="sudo chown -R `whoami`"
 
 # Recursively delete `.DS_Store` files
@@ -100,3 +112,10 @@ alias dotfiles="$EDITOR $DOTFILES"
 
 # srs
 [[ -s "$HOME/srs.sh" ]] && source "$HOME/srs.sh"
+
+
+if [[ $PROFILE_BASHRC ]]; then
+    set +x
+    exec 2>&3 3>&-
+    subl /tmp/bashstart.$$.log
+fi
