@@ -13,14 +13,6 @@ header 'Saving list of perlbrew modules...'
 perlbrew list-modules > $DOTFILES/data/perlbrew.txt
 echo
 
-# seil
-SEIL=/Applications/Seil.app/Contents/Library/bin/seil
-if [[ -s $SEIL ]]; then
-    header 'Saving Seil settings...'
-    $SEIL export > $DOTFILES/inc/setup/seil.sh
-    echo
-fi
-
 # spectacle
 SPECTACLE=/Applications/Spectacle.app/Contents/MacOS/Spectacle
 if [[ -s $SPECTACLE ]]; then
