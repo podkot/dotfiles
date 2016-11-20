@@ -1,2 +1,4 @@
 lib
 !lib/.gitkeep
+bin/dropboxes.sh
+bin/subl
