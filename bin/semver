@@ -1,5 +1,6 @@
 #!/bin/bash
 # Sekati: Semantic Version String Manipulator
+# https://github.com/sekati/semver
 # @author jason m horwitz | sekati.com
 # Copyright (C) 2012 jason m horwitz, Sekat LLC. All Rights Reserved.
 
