@@ -1,4 +1,16 @@
 [alias]
+    # stash only unstaged changes to tracked files
+    stsh = stash --keep-index
+    # stash untracked and tracked files
+    staash = stash --include-untracked
+    # stash ignored, untracked, and tracked files
+    staaash = stash --all
+
+    # git find-merge [rev]
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    # git show-merge [rev]
+    show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
+
     # View the current working tree status using the short format
     s = status -s
 
@@ -87,8 +99,8 @@
 
 
 [user]
-	email = podkot@gmail.com
-	name = Сергей Ермаков
+    email = podkot@gmail.com
+    name = Сергей Ермаков
 
 [push]
     default = current
@@ -96,8 +108,9 @@
     followTags = true
 
 [core]
-	editor = "mc -e "
-	excludesfile = ~/.gitignore_global
+    editor = "mc -e "
+    excludesfile = ~/.gitignore_global
+    attributesfile = ~/.gitattributes_global
 
     # Treat spaces before tabs and all kinds of trailing whitespace as an error
     # [default] trailing-space: looks for spaces at the end of a line
@@ -113,7 +126,7 @@
     precomposeunicode = false
 
 [color]
-	ui = true
+    ui = true
     diff = true
     status = true
     branch = true
@@ -144,18 +157,43 @@
     # Detect copies as well as renames
     renames = copies
 
+[diff "catdoc"]
+    textconv = catdoc
+    binary = true
+
+[diff "xls2csv"]
+    textconv = xls2csv
+    binary = true
+
+[diff "catppt"]
+    textconv = catppt
+    binary = true
+
+#[diff "exif"]
+#    textconv = exif
+#    binary = true
+
+[diff "pdftotext"]
+    textconv = pdftotext
+    binary = true
+
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 1
 
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
-    log = true
+    # log = true
+    tool = sourcetree
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+[mergetool]
+    keepBackup = false
 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    #cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true

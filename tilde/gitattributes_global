@@ -1,0 +1,17 @@
+*.min.js binary
+*.min.css binary
+
+#*.jpg diff=exif
+#*.jpeg diff=exif
+#*.png diff=exif
+#*.gif diff=exif
+
+*.rtf diff=catdoc
+*.doc diff=catdoc
+*.docx diff=catdoc
+
+*.xls diff=xls2csv
+
+*.ppt diff=catppt
+
+*.pdf diff=pdftotext
