@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Releases the next version of the product to npm or Bower
-# 
+#
 # Usage:
 #   release <major|minor|patch>
 #   release <VERSION> --force
@@ -53,10 +53,10 @@ fi
 cmpnt_ver=$(find . -maxdepth 1 -name "bower.json" | xargs cat | jq -r ".version")
 pkg_ver=$(find . -maxdepth 1 -name "package.json" | xargs cat | jq -r ".version")
 
-# Non npm package 
+# Non npm package
 [ "$pkg_ver" == "0.0.0" ] && pkg_ver=
 
-# Verify current versions 
+# Verify current versions
 current_ver=
 [ -n "$cmpnt_ver" ] && current_ver="$cmpnt_ver"
 [ -n "$pkg_ver" ] && current_ver="$pkg_ver"
@@ -127,9 +127,11 @@ fi
 
 # Commit changed files
 git commit -am "v$new_ver"
+git tag $new_ver
 
 # Push everything
 git push origin
+git push origin --tags
 
 # Publish npm package
 if [ -n "$pkg_ver" ]; then
