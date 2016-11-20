@@ -95,4 +95,10 @@ if command_exists composer; then
 fi
 
 
+# shipit
+pathtoshipit=$DOTFILES/bin/shipit
+curl -o $pathtoshipit https://raw.githubusercontent.com/sapegin/shipit/master/bin/shipit
+chmod +x $pathtoshipit
+unset pathtoshipit
+
 

@@ -3,3 +3,4 @@
 `g [match]`  - Quick grep: ag, ack or grep
 `licen mit > LICENSE` - [licen](https://github.com/lord63/licen) generates license files
 `release [major|minor|patch]` - Releases the next version of the product to npm or Bower
+`shipit` - [Minimalistic SSH deployment](https://github.com/sapegin/shipit)
