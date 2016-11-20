@@ -18,7 +18,7 @@ sudo apt-get install curl git vim
 
 ## todo
 
-[ ] how to `brew cask upgrade`
+[x] how to `brew cask upgrade`
 https://github.com/caskroom/homebrew-cask/issues/309
 http://apple.stackexchange.com/questions/190072/is-there-any-way-to-upgrade-brew-cask
 
