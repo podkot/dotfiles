@@ -7,7 +7,7 @@ sudo pmset -a standbydelay 86400
 sudo nvram SystemAudioVolume=" "
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
-defaults write com.apple.universalaccess reduceTransparency -bool true
+#defaults write com.apple.universalaccess reduceTransparency -bool true
 
 
 # Disable smart quotes as they’re annoying when typing code
@@ -27,7 +27,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 defaults write com.apple.dock showhidden -bool true
 
 # Disable menu bar transparency
-defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+#defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
 # Show remaining battery time; hide percentage
 # defaults write com.apple.menuextra.battery ShowPercent -string "YES"
