@@ -1,6 +1,6 @@
 # dotfiles
 
-while on mac, `xcode-select --install` first. then:
+while on mac, `xcode-select --install` first.
 
 ```bash
 \curl -L https://raw.githubusercontent.com/podkot/dotfiles/master/install | bash
@@ -15,26 +15,6 @@ sudo apt-get install curl git vim
 ## [commands](COMMANDS.md)
 
 ## [keys](KEYS.md)
-
-## todo
-
-[x] how to `brew cask upgrade`
-https://github.com/caskroom/homebrew-cask/issues/309
-http://apple.stackexchange.com/questions/190072/is-there-any-way-to-upgrade-brew-cask
-
-[ ] replace rvm with rbenv
-
-[ ] sshrc + minimal installer when via ssh
-
-[ ] source after perlbrew, rvm, nvm installation
-
-[ ] enable only applicable bash-it plugins
-
-[ ] check and change bin/repo
-
-[ ] prefix `save`, `update`, `install`, `setup`, `sync` commands with `dotfiles-`
-
-[ ] centos scripts
 
 ## sources
 
