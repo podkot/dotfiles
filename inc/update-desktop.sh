@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# DOTFILES="$HOME/dotfiles"
-# source "$DOTFILES/tilde/bashrc"
-
 # perlbrew reinstall:
 # perlbrew list-modules | perlbrew exec --with perl-5.20.0@foo-project cpanm
 
@@ -13,26 +10,26 @@
 
 # pip
 if command_exists pip ; then
+    header "Updating pip"
     pip install -U pip
     pip install -U licen
-    # pip install -U thefuck
 fi
 
 if command_exists pip3 ; then
+    header "Updating pip3"
+    pip3 install -U pip3
     pip3 install -U pyyaml
 fi
 
-# nvm
-if command_exists nvm ; then
-    header "Installing/updating node..."
-    nvm install stable
-    nvm use stable
-    nvm alias default stable
-fi
+# n node
+if command_exists n; then
+    header "Updating stable node"
+    n stable;
+fi;
 
 # npm
 if command_exists npm ; then
-    header "Installing/updating npm packages..."
+    header "Installing/updating npm packages"
     npm config set loglevel warn
     npm config set save-prefix ''
     npm install -g npm
@@ -55,25 +52,17 @@ if command_exists npm ; then
     npm install -g jade-lint
     npm install -g yarn
 fi
-# if command_exists npm; then
-#     header "Updating NPM..."
-#     npm update npm -g
-#     npm update -g
-#     echo
-# fi
 
 # rvm
-if command_exists rvm; then
-    header "Updating RVM..."
-    # rvm get head
-    rvm get stable
-    rvm reload
+if command_exists ruby-install; then
+    header "Updating ruby"
+    ruby-install ruby 2.2
     echo
 
     # gems
     if command_exists gem; then
-        header "Updating Ruby gems..."
-        # sudo -v
+        header "Updating ruby gems"
+        command_exists bundler || gem install bundler
         gem update
         echo
     fi
@@ -81,7 +70,7 @@ fi
 
 # composer
 if command_exists composer; then
-    header "Updating composer packages..."
+    header "Updating composer packages"
 
     composer global require phpdocumentor/phpdocumentor
     composer global require phpmd/phpmd
@@ -96,6 +85,7 @@ fi
 
 
 # shipit
+header "Updating shipit"
 pathtoshipit=$DOTFILES/bin/shipit
 curl -o $pathtoshipit https://raw.githubusercontent.com/sapegin/shipit/master/bin/shipit
 chmod +x $pathtoshipit

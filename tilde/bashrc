@@ -1,3 +1,4 @@
+# time source ~/.bashrc
 # export PROFILE_BASHRC=1
 
 if [[ $PROFILE_BASHRC ]]; then
@@ -63,17 +64,12 @@ fi
 # composer
 [[ -d "$HOME/.composer/vendor/bin" ]] && export PATH="$PATH:$HOME/.composer/vendor/bin"
 
-# fuck
-# if command_exists thefuck; then
-#     eval $(thefuck --alias)
-# fi
-
 # grunt
 if command_exists grunt; then
     # Make Grunt print stack traces by default
     alias grunt="grunt --stack"
-    alias dgrunt="node-debug -p 8888 $(which grunt)"
-    alias igrunt="iron-node $(which grunt)"
+    # alias dgrunt="node-debug -p 8888 $(which grunt)"
+    # alias igrunt="iron-node $(which grunt)"
 fi
 
 # Easier navigation: .., ..., ...., ....., ~ and -
@@ -81,8 +77,9 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
+
+# trick to make aliases available when using sudo
+alias sudo='sudo '
 
 # misc aliases
 alias x="exit"
@@ -106,7 +103,6 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias reload="exec $SHELL -l"
 
 # configs
-alias zshrc="$EDITOR ~/.zshrc"
 alias hosts="$EDITOR /etc/hosts"
 alias dotfiles="$EDITOR $DOTFILES"
 
@@ -122,6 +118,8 @@ if [[ -f ~/.sman/sman.rc ]]; then
     source ~/.sman/sman.rc
     alias r="s r"
 fi
+
+alias re="time source ~/.bashrc"
 
 if [[ $PROFILE_BASHRC ]]; then
     set +x

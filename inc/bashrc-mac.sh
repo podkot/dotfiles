@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
 # php-version
-# source $(brew --prefix php-version)/php-version.sh && php-version 5
+# source $(brew --prefix php-version)/php-version.sh && php-version 7
 
+# chruby
+export PREFIX="${PREFIX:-/usr/local}"
+if [ -n \"\$BASH_VERSION\" ] || [ -n \"\$ZSH_VERSION\" ]; then
+    if [[ -f $PREFIX/share/chruby/chruby.sh ]]; then
+        source $PREFIX/share/chruby/chruby.sh
+        # source $PREFIX/share/chruby/auto.sh
+        chruby 2.2
+    fi
+fi
 
 export EDITOR="subl"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
@@ -20,15 +29,15 @@ alias phpini="$EDITOR /usr/local/etc/php/7.0/php.ini" # php -i | grep 'Configura
 alias vhosts="$EDITOR /usr/local/etc/apache2/2.4/extra/httpd-vhosts.conf"
 
 # npm
-alias ni='npm install'
-alias nis='npm install --save'
-alias nid='npm install --save-dev'
-alias nig='npm install --global'
-alias nt='npm test'
-alias nit='npm install && npm test'
-alias nk='npm link'
-alias nr='npm run'
-alias nf='npm cache clean && rm -rf node_modules && npm install'
+# alias ni='npm install'
+# alias nis='npm install --save'
+# alias nid='npm install --save-dev'
+# alias nig='npm install --global'
+# alias nt='npm test'
+# alias nit='npm install && npm test'
+# alias nk='npm link'
+# alias nr='npm run'
+# alias nf='npm cache clean && rm -rf node_modules && npm install'
 
 # servers
 alias apache-conf="$EDITOR /usr/local/etc/apache2/2.4/httpd.conf" # httpd -V | grep 'SERVER_CONFIG_FILE'
