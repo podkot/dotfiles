@@ -1,5 +1,6 @@
 # time source ~/.bashrc
 # export PROFILE_BASHRC=1
+export SECONDS=0
 
 if [[ $PROFILE_BASHRC ]]; then
     PS4='+ $(date "+%s.%N")\011 '
@@ -126,3 +127,6 @@ if [[ $PROFILE_BASHRC ]]; then
     exec 2>&3 3>&-
     subl /tmp/bashstart.$$.log
 fi
+
+duration=$SECONDS
+echo "$duration s"

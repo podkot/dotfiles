@@ -17,7 +17,6 @@ fi
 
 if command_exists pip3 ; then
     header "Updating pip3"
-    pip3 install -U pip3
     pip3 install -U pyyaml
 fi
 
@@ -56,7 +55,7 @@ fi
 # rvm
 if command_exists ruby-install; then
     header "Updating ruby"
-    ruby-install ruby 2.2
+    which ruby | grep 2.2. || ruby-install ruby 2.2
     echo
 
     # gems
