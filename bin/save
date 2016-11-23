@@ -13,16 +13,5 @@ header 'Saving list of perlbrew modules...'
 perlbrew list-modules > $DOTFILES/data/perlbrew.txt
 echo
 
-# spectacle
-SPECTACLE=/Applications/Spectacle.app/Contents/MacOS/Spectacle
-if [[ -s $SPECTACLE ]]; then
-    header 'Saving Spectacle keybindings...'
-    SPECTACLE_SCRIPT=$DOTFILES/inc/setup/spectacle.sh
-    echo '#!/usr/bin/env bash' > $SPECTACLE_SCRIPT
-    # MoveToBottomDisplay MoveToLeftDisplay MoveToRightDisplay MoveToTopDisplay
-    for key in MakeLarger MakeSmaller MoveToBottomHalf MoveToCenter MoveToFullscreen MoveToLeftHalf MoveToLowerLeft MoveToLowerRight MoveToNextDisplay MoveToNextThird MoveToPreviousDisplay MoveToPreviousThird MoveToRightHalf MoveToTopHalf MoveToUpperLeft MoveToUpperRight RedoLastMove UndoLastMove; do
-      printf "defaults write com.divisiblebyzero.Spectacle ${key} -data " >> $SPECTACLE_SCRIPT;
-      echo `defaults read com.divisiblebyzero.Spectacle ${key} | sed 's/[^0-9a-f]//g'` >> $SPECTACLE_SCRIPT;
-    done
-    echo
-fi
+# mackup - once, by hands
+# command_exists mackup && mackup backup
