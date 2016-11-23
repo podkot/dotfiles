@@ -9,6 +9,8 @@ __[fzf](https://github.com/junegunn/fzf)__
 
 ## vim
 
+<kbd>fn</kbd> <kbd>i</kbd> - Insert
+
 __[ag](https://github.com/rking/ag.vim)__  
 `:Ag [options] {pattern} [{directory}]`  
 In the quickfix window, you can use:  
