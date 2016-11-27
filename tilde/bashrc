@@ -52,8 +52,6 @@ if [[ -d "$DOTFILES/lib/bash_it" ]]; then
     # export GIT_HOSTING='git@git.domain.com'
     # Don't check mail when opening terminal.
     unset MAILCHECK
-    # Set this to the command you use for todo.txt-cli
-    # export TODO="t"
     # Set this to false to turn off version control status checking within the prompt for all themes
     export SCM_CHECK=true
     source $BASH_IT/bash_it.sh
@@ -78,6 +76,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ~="cd ~"
+alias -- -="cd -"
 
 # trick to make aliases available when using sudo
 alias sudo='sudo '
@@ -106,9 +106,6 @@ alias reload="exec $SHELL -l"
 alias hosts="$EDITOR /etc/hosts"
 alias dotfiles="$EDITOR $DOTFILES"
 
-# srs
-[[ -s "$HOME/srs.sh" ]] && source "$HOME/srs.sh"
-
 # sman
 if [[ -f ~/.sman/sman.rc ]]; then
     export SMAN_APPEND_HISTORY=true
@@ -118,6 +115,10 @@ if [[ -f ~/.sman/sman.rc ]]; then
     source ~/.sman/sman.rc
     alias r="s r"
 fi
+
+
+
+[[ -f ~/.bashrc_local ]] && source ~/.bashrc_local
 
 alias re="time source ~/.bashrc"
 

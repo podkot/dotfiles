@@ -39,6 +39,7 @@ fi
 vim +PluginInstall +qall
 
 
+command_exists dotfiles-on-update && dotfiles-on-update
 
 ### final step
 source ~/.bashrc

@@ -50,9 +50,10 @@ if command_exists npm ; then
     npm install -g eslint
     npm install -g jade-lint
     npm install -g yarn
+    npm install -g tern
 fi
 
-# rvm
+# ruby
 if command_exists ruby-install; then
     header "Updating ruby"
     which ruby | grep 2.2. || ruby-install ruby 2.2
