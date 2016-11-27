@@ -29,6 +29,7 @@ fi
 export SESSION_TYPE=$SESSION_TYPE
 
 # bash
+unset MAILCHECK # Don't check mail when opening terminal.
 shopt -s expand_aliases # for aliases to work in sourced scripts
 tty -s && stty werase ^- 2>/dev/null # this is for delete words by ^W
 
@@ -53,19 +54,11 @@ alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 alias ls="command ls ${colorflag}"
 
 
-# bash-it
-if [[ -d "$DOTFILES/lib/bash_it" ]]; then
-    export BASH_IT="$DOTFILES/lib/bash_it"
-    export CUSTOM_THEME_DIR="$DOTFILES/etc/bash-it"
-    export BASH_IT_THEME='powerline-podkot'
-    # Your place for hosting Git repos. I use this for private repos.
-    # export GIT_HOSTING='git@git.domain.com'
-    # Don't check mail when opening terminal.
-    unset MAILCHECK
-    # Set this to false to turn off version control status checking within the prompt for all themes
-    export SCM_CHECK=true
-    source $BASH_IT/bash_it.sh
-fi
+# prompt
+export SCM_CHECK=true
+# if [ -z "$MC_SID" ]; then
+    source $DOTFILES/inc/prompt.sh
+# fi;
 
 # perlbrew
 [[ -s "$HOME/perl5/perlbrew/etc/bashrc" ]] && source "$HOME/perl5/perlbrew/etc/bashrc"
@@ -94,7 +87,7 @@ alias sudo='sudo '
 
 # misc aliases
 alias x="exit"
-alias mc="mc -S xoria256"
+alias mc="DISPLAY=;mc -S xoria256 " #--nosubshell
 alias psg="ps auxw | grep"
 alias 777="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 0666 {} ';'"
 alias 666="find . -type d -exec chmod 0777 {} ';' && find . -type f -exec chmod 0666 {} ';'"
@@ -139,4 +132,4 @@ if [[ $PROFILE_BASHRC ]]; then
 fi
 
 duration=$SECONDS
-echo "$duration s"
+echo Load: "$duration"s

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# DOTFILES="$HOME/dotfiles"
-# source "$DOTFILES/tilde/bashrc"
-
 # os x
 header "Updating macOS"
 # sudo -v
