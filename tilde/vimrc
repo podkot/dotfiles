@@ -1,48 +1,35 @@
-" vim-sublime - A minimal Sublime Text -like vim experience bundle
-"               http://github.com/grigio/vim-sublime
-" Best view with a 256 color terminal and Powerline fonts
-
-" Setting up Vundle - the vim plugin bundler
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
-        let iCanHazVundle=0
-    endif
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#begin()
-    "...All your other bundles...
-    if iCanHazVundle == 0
-        Vundle 'VundleVim/Vundle.vim'
-        :VundleInstall
-    endif
-" Setting up Vundle - the vim plugin bundler end
+let mapleader = '\'
+let vimsettings = '~/dotfiles/vimrc.d'
 
 set nocompatible
 filetype off
+
+" to map C-q & C-s
+silent !stty -ixon > /dev/null 2>/dev/null
+
+" Setting up Vundle - the vim plugin bundler
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
+"...All your other bundles...
+if iCanHazVundle == 0
+    Vundle 'VundleVim/Vundle.vim'
+    :VundleInstall
+endif
+" Setting up Vundle - the vim plugin bundler end
 
-Plugin 'tpope/vim-surround'
-Plugin 'gcmt/breeze.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'mattn/emmet-vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'rking/ag.vim'
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
-Plugin 'pangloss/vim-javascript'
+for fpath in split(globpath(vimsettings, '*.vim'), '\n')
+  exe 'source' fpath
+endfor
 
 call vundle#end()
 
@@ -50,13 +37,24 @@ if iCanHazVundle == 0
     :PluginInstall
 endif
 
+
 """"""""
 if has('autocmd')
-  filetype plugin indent on
+    filetype plugin indent on
+
+    " Auto change the directory to the current file I'm working on
+    autocmd BufEnter * lcd %:p:h
 endif
+
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable
+    syntax enable
 endif
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
 
 silent! colorscheme Monokai
 
@@ -75,10 +73,6 @@ set ttimeout
 set ttimeoutlen=50
 
 set incsearch
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
 
 set laststatus=2
 set ruler
@@ -88,126 +82,75 @@ set wildmenu
 set autoread
 
 set encoding=utf-8
-set tabstop=2 shiftwidth=2 expandtab
+set fileencodings=utf-8,cp1251
+set tabstop=4 shiftwidth=4 expandtab
 set listchars=tab:▒░,trail:▓
 set list
-
-inoremap <C-U> <C-G>u<C-U>
 
 set number
 set hlsearch
 set ignorecase
 set smartcase
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
 " do not history when leavy buffer
 set hidden
-
-" FIXME: (broken) ctrl s to save
-noremap  <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <Esc>:update<CR>
 
 set nobackup
 set nowritebackup
 set noswapfile
 set fileformats=unix,dos,mac
 
+set completeopt=menuone,longest,preview
+
+
+
+" Don't use Ex mode
+nnoremap Q <nop>
+
 " exit insert mode
 inoremap <C-c> <Esc>
 
-set completeopt=menuone,longest,preview
-
-"
-" Plugins config
-"
-
-" CtrlP
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-
-" Ultisnip
-" NOTE: <f1> otherwise it overrides <tab> forever
-let g:UltiSnipsExpandTrigger="<f1>"
-let g:UltiSnipsJumpForwardTrigger="<f1>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:did_UltiSnips_vim_after = 1
-
-" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" syntactic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" ag
-let g:ag_working_path_mode="r"
-
-"
-" Basic shortcuts definitions
-"  most in visual mode / selection (v or ⇧ v)
-"
-
-" Find
-map <C-f> /
-" indend / deindent after selecting the text with (⇧ v), (.) to repeat.
-vnoremap <Tab> >
-vnoremap <S-Tab> <
-" comment / decomment & normal comment behavior
-vmap <C-m> gc
-" Disable tComment to escape some entities
-let g:tcomment#replacements_xml={}
-" Text wrap simpler, then type the open tag or ',"
-vmap <C-w> S
-" Cut, Paste, Copy
-vmap <C-x> d
-vmap <C-v> p
-vmap <C-c> y
-" Undo, Redo (broken)
-nnoremap <C-z>  :undo<CR>
-inoremap <C-z>  <Esc>:undo<CR>
-nnoremap <C-y>  :redo<CR>
-inoremap <C-y>  <Esc>:redo<CR>
-" Tabs
-let g:airline_theme='badwolf'
-let g:airline#extensions#tabline#enabled = 1
 nnoremap <C-b>  :tabprevious<CR>
 inoremap <C-b>  <Esc>:tabprevious<CR>i
 nnoremap <C-n>  :tabnext<CR>
 inoremap <C-n>  <Esc>:tabnext<CR>i
 nnoremap <C-t>  :tabnew<CR>
 inoremap <C-t>  <Esc>:tabnew<CR>i
-nnoremap <C-k>  :tabclose<CR>
-inoremap <C-k>  <Esc>:tabclose<CR>i
-" TODO NERDTree
-" nnoremap <C-0>  :NERDTreeToggle<CR>
-" inoremap <C-0>  <Esc>:NERDTreeToggle<CR>i
+nnoremap <C-w>q  :tabclose<CR>
+inoremap <C-w>q  <Esc>:tabclose<CR>i
 
-" lazy ':'
-map \ :
+noremap  <C-s> :update<CR>
+vnoremap <C-s> <C-C>:update<CR>
+inoremap <C-s> <Esc>:update<CR>
 
-let mapleader = ','
+noremap  <C-s>q :update<CR>:quit<CR>
+vnoremap <C-s>q <C-C>:update<CR>:quit<CR>
+inoremap <C-s>q <Esc>:update<CR>:quit<CR>
+
+noremap  <C-a>q :quit!<CR>
+vnoremap <C-a>q <C-C>:quit!<CR>
+inoremap <C-a>q <Esc>:quit!<CR>
+
+noremap  <C-a>a :qa!<CR>
+vnoremap <C-a>a <C-C>:qa!<CR>
+inoremap <C-a>a <Esc>:qa!<CR>
+
+" indend / deindent after selecting the text with (⇧ v), (.) to repeat.
+vnoremap <Tab> >
+vnoremap <S-Tab> <
+
+" Paste from clipboard when in insert mode.
+imap <C-V> <ESC>"+gpa
+" Paste from clipboard when in visual mode. (Replace whatever is selected in visual mode.)
+vmap <C-V> "+gp
+" Copy selection to clipboard when in visual mode.
+vmap <C-C> "+y
+
+" 'paste' prevents autoindent on pasted text
 nnoremap <Leader>p :set paste<CR>
 nnoremap <Leader>o :set nopaste<CR>
-noremap  <Leader>g :GitGutterToggle<CR>
+
+
 
 " this machine config
 if filereadable(expand("~/.vimrc.local"))

@@ -9,7 +9,7 @@ while on mac, `xcode-select --install` first.
 ubuntu prerequisites:
 
 ```bash
-sudo apt-get install curl git vim
+sudo apt-get install curl git vim editorconfig
 ```
 
 ## [commands](COMMANDS.md)
