@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+source ~/.bashrc
+
+# dotfiles
+header "Updating dotfiles"
+pushd "$DOTFILES"
+    git pull
+    $DOTFILES/bin/dotfiles-sync
+    source ~/.bashrc
+popd
+echo
+
+if [[ `uname` == 'Darwin' ]]; then
+    source $DOTFILES/bin/update/mac.sh
+# else
+fi
+
+if [[ $SESSION_TYPE != 'remote/ssh' ]]; then
+    source $DOTFILES/bin/update/desktop.sh
+fi
+
+command_exists dotfiles-on-update && dotfiles-on-update
+
+### final step
+source ~/.bashrc

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [[ `uname` == 'Darwin' ]]; then
+    source $DOTFILES/bin/setup/mac.sh
+    source $DOTFILES/bin/setup/osx.sh
+else
+    source $DOTFILES/bin/setup/linux.sh
+fi
+
+if [[ $SESSION_TYPE != 'remote/ssh' ]]; then
+    source $DOTFILES/bin/setup/desktop.sh
+fi
+
+source $DOTFILES/bin/setup/common.sh
+
+source $DOTFILES/bin/dotfiles-update
+

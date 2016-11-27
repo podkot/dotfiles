@@ -19,7 +19,17 @@ else
     source "$DOTFILES/inc/bashrc-linux.sh"
 fi
 
+if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
+  SESSION_TYPE=remote/ssh
+else
+  case $(ps -o comm= -p $PPID) in
+    sshd|*/sshd) SESSION_TYPE=remote/ssh;;
+  esac
+fi
+export SESSION_TYPE=$SESSION_TYPE
+
 # bash
+shopt -s expand_aliases # for aliases to work in sourced scripts
 tty -s && stty werase ^- 2>/dev/null # this is for delete words by ^W
 
 # colors

@@ -4,14 +4,14 @@
 # source "$DOTFILES/tilde/bashrc"
 
 # os x
-header "Updating OS X..."
+header "Updating macOS"
 # sudo -v
 sudo softwareupdate -i -a
 xcode-select --install
 echo
 
 # homebrew
-header "Updating Homebrew..."
+header "Updating Homebrew"
 # sudo -v
 brew update
 brew upgrade --all

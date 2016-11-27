@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source ~/.bashrc
+
+# brew
+header 'Saving brew & cask'
+brew bundle dump --file=$DOTFILES/tilde/Brewfile --force
+echo
+
+# perlbrew
+header 'Saving list of perlbrew modules'
+perlbrew list-modules > $DOTFILES/etc/perlbrew.txt
+echo

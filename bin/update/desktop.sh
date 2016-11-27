@@ -17,6 +17,7 @@ fi
 
 if command_exists pip3 ; then
     header "Updating pip3"
+    pip3 install -U pip
     pip3 install -U pyyaml
 fi
 
@@ -33,11 +34,9 @@ if command_exists npm ; then
     npm config set save-prefix ''
     npm install -g npm
     npm install -g grunt-cli
-    # npm install -g yo
     npm install -g bower
-    # npm install -g docpad
     npm install -g npm-check-updates
-    npm install -g node-inspector
+    # npm install -g node-inspector
     npm install -g iron-node
     npm install -g karma-cli
     npm install -g github-release-from-changelog

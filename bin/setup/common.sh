@@ -1,29 +1,8 @@
 #!/usr/bin/env bash
 
-DOTFILES="$HOME/dotfiles"
-source "$DOTFILES/tilde/bashrc"
-
-if [[ `uname` == 'Darwin' ]]; then
-    source $DOTFILES/inc/setup-mac.sh
-# else
-#     echo
-fi
-
-if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-  SESSION_TYPE=remote/ssh
-else
-  case $(ps -o comm= -p $PPID) in
-    sshd|*/sshd) SESSION_TYPE=remote/ssh;;
-  esac
-fi
-
-if [[ $SESSION_TYPE != 'remote/ssh' ]]; then
-    source $DOTFILES/inc/setup-desktop.sh
-fi
-
 # bash-it
 if [[ ! -d $DOTFILES/lib/bash_it/ ]]; then
-    header "Installing bash_it..."
+    header "Installing bash_it"
     git clone --depth=1 https://github.com/Bash-it/bash-it.git $DOTFILES/lib/bash_it
     # $DOTFILES/lib/bash_it/install.sh
     echo
@@ -40,7 +19,3 @@ expect <<'END'
     expect "Copy snippets from repo to home?"
     send "n\r"
 END
-
-
-source $DOTFILES/bin/update
-
