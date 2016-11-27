@@ -15,3 +15,15 @@
 - `server [port]` - Start an HTTP server from a directory, optionally specifying the port 
 - `shipit` - [Minimalistic SSH deployment](https://github.com/sapegin/shipit)
 - `tre` - is a shorthand for `tree` with hidden files and color enabled, ignoring the `.git` directory, listing directories first. The output gets piped into `less` with options to preserve color and line numbers, unless the output is small enough for one screen.
+
+
+# bash tips
+
+- `^foo^bar` Запуск предыдущей команды с заменой в ней подстроки, например, с foo на bar. Полезна при опечатках. Если ввести просто ^foo, то в предыдущей команде первое вхождение foo будет удалено.
+
+- `sudo !!` - rerun last command as root.
+
+- `cd -` - Возврат в предыдущую рабочую директорию. Может пригодиться и для переключения туда-сюда между двумя директориями.
+
+- `<пробел>команда` Запуск команды с пробелом перед ней не сохраняет ее в истории. Может пригодиться при передаче паролей программам в открытом виде.
+
