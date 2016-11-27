@@ -9,31 +9,38 @@ __[fzf](https://github.com/junegunn/fzf)__
 
 # vim
 
-`vimtutor` first.
-`:help [option]` then.
+`vimtutor` first, `:help [option]` then.
 
-<kbd>ctrl</kbd><kbd>p</kbd> CtrlP
-<kbd>ctrl</kbd><kbd>t</kbd> New tab
-<kbd>ctrl</kbd><kbd>n</kbd> Next tab
-<kbd>ctrl</kbd><kbd>b</kbd> Prev tab
-<kbd>ctrl</kbd><kbd>k</kbd> Toggle sidebar
-<kbd>ctrl</kbd><kbd>d</kbd> Multiple cursor down
-<kbd>ctrl</kbd><kbd>u</kbd> Multiple cursor up
-<kbd>ctrl</kbd><kbd>w</kbd><kbd>w</kbd> Cycle windows: go next
-<kbd>ctrl</kbd><kbd>w</kbd><kbd>h</kbd> Go window left
-<kbd>ctrl</kbd><kbd>w</kbd><kbd>j</kbd> Go window down
-<kbd>ctrl</kbd><kbd>w</kbd><kbd>k</kbd> Go window up
-<kbd>ctrl</kbd><kbd>w</kbd><kbd>l</kbd> Go window right
-<kbd>ctrl</kbd><kbd>w</kbd><kbd>q</kbd> Close tab
+General bindings:
 
-## create a file
+- <kbd>ctrl</kbd><kbd>s</kbd> Update (save) file
+- <kbd>ctrl</kbd><kbd>w</kbd><kbd>q</kbd> Close tab
+- <kbd>ctrl</kbd><kbd>a</kbd><kbd>q</kbd> Force close tab without saving
+- <kbd>ctrl</kbd><kbd>a</kbd><kbd>a</kbd> Force quit (close all tabs without saving)
+- <kbd>ctrl</kbd><kbd>t</kbd> New tab
+- <kbd>ctrl</kbd><kbd>n</kbd> Next tab
+- <kbd>ctrl</kbd><kbd>b</kbd> Prev tab
+- <kbd>ctrl</kbd><kbd>w</kbd><kbd>w</kbd> Cycle windows: go next
+- <kbd>ctrl</kbd><kbd>w</kbd><kbd>h</kbd> Go window left
+- <kbd>ctrl</kbd><kbd>w</kbd><kbd>j</kbd> Go window down
+- <kbd>ctrl</kbd><kbd>w</kbd><kbd>k</kbd> Go window up
+- <kbd>ctrl</kbd><kbd>w</kbd><kbd>l</kbd> Go window right
 
-`:e somefile.txt` - in current file's directory (via `autocmd BufEnter * lcd %:p:h ` in <div class="vimrc"></div>)
+Plugins:
 
-`m` and then `a` in NERDTree (dirname must end with `/`)
+- <kbd>ctrl</kbd><kbd>p</kbd> CtrlP
+- <kbd>ctrl</kbd><kbd>d</kbd> Multiple cursor down
+- <kbd>ctrl</kbd><kbd>u</kbd> Multiple cursor up
+
+NERDTree family:
+
+- <kbd>ctrl</kbd><kbd>k</kbd> Toggle sidebar
+- `m` and then `a` in NERDTree to create a file or a directory (dirname must end with `/`)
+
 
 ## misc
 
+`:e somefile.txt` - create a in current file's directory (current directory is determined via `autocmd BufEnter * lcd %:p:h ` in .vimrc)
 `:e ++enc=cp1251`
 `:set syntax=tt2html`
 `!22jsort` - sort current & 22 next lines via \`sort\` (short for `:.,.+22!sort`)
@@ -76,9 +83,5 @@ There are three different types of highlighting in visual mode. Each allows the 
 
 ### linewise visual mode
 
-<kbd>shift</kbd><kbd>b</kbd>
+<kbd>shift</kbd><kbd>v</kbd>
 
-
-## links
-- [per project .vimrc](https://github.com/MarcWeber/vim-addon-local-vimrc)
-- [change syntax by extension](http://vim.wikia.com/wiki/Forcing_Syntax_Coloring_for_files_with_odd_extensions)
