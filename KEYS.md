@@ -5,7 +5,7 @@
 - [bash](#bash)
 - [tig](#tig)
 - [vim](#vim)
-    - [misc](#misc)
+    - [commands](#commands)
     - [modes](#modes)
         - [insert](#insert)
         - [normal](#normal)
@@ -46,21 +46,30 @@ General bindings:
 - <kbd>ctrl</kbd><kbd>w</kbd><kbd>j</kbd> Go window down
 - <kbd>ctrl</kbd><kbd>w</kbd><kbd>k</kbd> Go window up
 - <kbd>ctrl</kbd><kbd>w</kbd><kbd>l</kbd> Go window right
+- <kbd>ctrl</kbd><kbd>k</kbd> Toggle sidebar (NERDTree-tabs)
+- <kbd>ctrl</kbd><kbd>v</kbd> Paste (in insert or visual mode)
+- <kbd>ctrl</kbd><kbd>c</kbd> Copy (in visual mode) or Exit insert mode
 
-Plugins:
+Misc plugins:
 
 - <kbd>ctrl</kbd><kbd>p</kbd> CtrlP
 - <kbd>ctrl</kbd><kbd>d</kbd> Multiple cursor down
 - <kbd>ctrl</kbd><kbd>u</kbd> Multiple cursor up
+- <kbd>ctrl</kbd><kbd>y</kbd><kbd>\</kbd> Emmet
+- <kbd>\</kbd><kbd>g</kbd> Toggle GitGutter
+- <kbd>\</kbd><kbd>/</kbd> Toggle line comment in normal and insert modes, toggle block comment in visual mode (TComment)
+- <kbd>ctrl</kbd><kbd>f</kbd> Ack (ag)
 
-NERDTree family:
+NERDTree:
 
-- <kbd>ctrl</kbd><kbd>k</kbd> Toggle sidebar
-- `m` and then `a` in NERDTree to create a file or a directory (dirname must end with `/`)
+- <kbd>m</kbd><kbd>a</kbd> create (dirname must end with `/`)
+- <kbd>m</kbd><kbd>d</kbd> delete
+- <kbd>m</kbd><kbd>m</kbd> move
+- <kbd>m</kbd><kbd>r</kbd> reveal in Finder (macOS specific)
 
 
-<a name="misc"></a>
-## misc
+<a name="commands"></a>
+## commands
 
 - `:e somefile.txt` - create a in current file's directory (current directory is determined via `autocmd BufEnter * lcd %:p:h ` in .vimrc)
 - `:e ++enc=cp1251`
