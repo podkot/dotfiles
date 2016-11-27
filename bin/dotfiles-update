@@ -11,12 +11,11 @@ pushd "$DOTFILES"
 popd
 echo
 
-if [[ `uname` == 'Darwin' ]]; then
+if [[ $IS_MAC == 1 ]]; then
     source $DOTFILES/bin/update/mac.sh
-# else
 fi
 
-if [[ $SESSION_TYPE != 'remote/ssh' ]]; then
+if [[ $IS_DESKTOP == 1 ]]; then
     source $DOTFILES/bin/update/desktop.sh
 fi
 

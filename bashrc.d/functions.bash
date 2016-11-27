@@ -1,11 +1,3 @@
-function command_exists () {
-    type "$1" &> /dev/null ;
-}
-
-function header() {
-    echo -e "$(tput sgr 0 1)$(tput setaf 6)$1$(tput sgr0)"
-}
-
 # Simple calculator
 function calc() {
     local result="";

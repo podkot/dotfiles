@@ -2,8 +2,8 @@
 
 # source: bash-it
 
-source $DOTFILES/inc/prompt/colors.sh
-source $DOTFILES/inc/prompt/base.sh
+source $DOTFILES/bashrc.d/prompt/colors.sh
+source $DOTFILES/bashrc.d/prompt/base.sh
 
 THEME_PROMPT_SEPARATOR=""
 THEME_PROMPT_LEFT_SEPARATOR=""

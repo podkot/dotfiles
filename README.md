@@ -16,6 +16,12 @@ sudo apt-get install curl git
 
 ## [keys](KEYS.md)
 
+## bashrc.d
+
+`-mac.bash` scripts run only on macOS
+`-linux.bash` scripts run only on Linux
+`-desktop.bash` don't run in ssh session
+
 ## sources
 
 - [sapegin/dotfiles](https://github.com/sapegin/dotfiles)

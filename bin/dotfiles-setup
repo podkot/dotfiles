@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-if [[ `uname` == 'Darwin' ]]; then
+if [[ $IS_MAC == 1 ]]; then
     source $DOTFILES/bin/setup/mac.sh
     source $DOTFILES/bin/setup/osx.sh
 else
     source $DOTFILES/bin/setup/linux.sh
 fi
 
-if [[ $SESSION_TYPE != 'remote/ssh' ]]; then
+if [[ $IS_DESKTOP == 1 ]]; then
     source $DOTFILES/bin/setup/desktop.sh
 fi
 
