@@ -19,11 +19,9 @@
 
 # bash tips
 
-- `^foo^bar` Запуск предыдущей команды с заменой в ней подстроки, например, с foo на bar. Полезна при опечатках. Если ввести просто ^foo, то в предыдущей команде первое вхождение foo будет удалено.
+- `^foo^bar` - rerun last command with substring substitution, e.g. s/foo/bar/. `^foo` rerun with substring deletion, s/foo//
 
 - `sudo !!` - rerun last command as root.
 
-- `cd -` - Возврат в предыдущую рабочую директорию. Может пригодиться и для переключения туда-сюда между двумя директориями.
-
-- `<пробел>команда` Запуск команды с пробелом перед ней не сохраняет ее в истории. Может пригодиться при передаче паролей программам в открытом виде.
+- `<space>command` - space before command prevents it to be saved in history.
 
