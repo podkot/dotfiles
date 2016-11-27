@@ -1,3 +1,22 @@
+# Key bindings
+
+<!-- MarkdownTOC autolink=true autoanchor=true bracket=round depth=0 -->
+
+- [bash](#bash)
+- [tig](#tig)
+- [vim](#vim)
+    - [misc](#misc)
+    - [modes](#modes)
+        - [insert](#insert)
+        - [normal](#normal)
+        - [visual](#visual)
+        - [plain visual mode](#plain-visual-mode)
+        - [block visual mode](#block-visual-mode)
+        - [linewise visual mode](#linewise-visual-mode)
+
+<!-- /MarkdownTOC -->
+
+<a name="bash"></a>
 # bash
 
 __[fzf](https://github.com/junegunn/fzf)__  
@@ -5,8 +24,10 @@ __[fzf](https://github.com/junegunn/fzf)__
 <kbd>ctrl</kbd> <kbd>r</kbd> - Paste the selected command from history onto the command line. Sort is disabled by default to respect chronological ordering. Press <kbd>ctrl</kbd> <kbd>r</kbd> again to toggle sort  
 <kbd>alt</kbd> <kbd>c</kbd> - cd into the selected directory  
 
+<a name="tig"></a>
 # [tig](http://jonas.nitro.dk/tig/manual.html#keys)
 
+<a name="vim"></a>
 # vim
 
 `vimtutor` first, `:help [option]` then.
@@ -38,49 +59,57 @@ NERDTree family:
 - `m` and then `a` in NERDTree to create a file or a directory (dirname must end with `/`)
 
 
+<a name="misc"></a>
 ## misc
 
-`:e somefile.txt` - create a in current file's directory (current directory is determined via `autocmd BufEnter * lcd %:p:h ` in .vimrc)
-`:e ++enc=cp1251`
-`:set syntax=tt2html`
-`!22jsort` - sort current & 22 next lines via \`sort\` (short for `:.,.+22!sort`)
+- `:e somefile.txt` - create a in current file's directory (current directory is determined via `autocmd BufEnter * lcd %:p:h ` in .vimrc)
+- `:e ++enc=cp1251`
+- `:set syntax=tt2html`
+- `!22jsort` - sort current & 22 next lines via \`sort\` (short for `:.,.+22!sort`)
 
+<a name="modes"></a>
 ## modes
 
+<a name="insert"></a>
 ### insert
 
 `:help Insert-mode`
 
 <kbd>ctrl</kbd><kbd>o</kbd> switch from insert to normal mode just for one command
 
+<a name="normal"></a>
 ### normal
 
 `:help Normal-mode`
 
 go insert mode with:
-<kbd>a</kbd> append after cursor
-<kbd>i</kbd> insert before cursor
-<kbd>A</kbd> append at end of line
-<kbd>I</kbd> insert at beginning of line
-<kbd>C</kbd> change to end of line
-<kbd>s</kbd> substitute characters
+- <kbd>a</kbd> append after cursor
+- <kbd>i</kbd> insert before cursor
+- <kbd>A</kbd> append at end of line
+- <kbd>I</kbd> insert at beginning of line
+- <kbd>C</kbd> change to end of line
+- <kbd>s</kbd> substitute characters
 
+<a name="visual"></a>
 ### visual
 
 `:help Visual-mode`
 
 There are three different types of highlighting in visual mode. Each allows the user to highlight text in different ways. Commands that normally only affect one character, line, or area will affect the highlighted text (such as changing text to uppercase (<kbd>Ctrl</kbd><kbd>~</kbd>), deleting text (<kbd>d</kbd>), indenting lines (>>, <<, and =), and so forth).
 
+<a name="plain-visual-mode"></a>
 ### plain visual mode
 
 <kbd>v</kbd>
 
+<a name="block-visual-mode"></a>
 ### block visual mode
 
 `:help visual-block`
 
 <kbd>ctrl</kbd><kbd>v</kbd>
 
+<a name="linewise-visual-mode"></a>
 ### linewise visual mode
 
 <kbd>shift</kbd><kbd>v</kbd>
