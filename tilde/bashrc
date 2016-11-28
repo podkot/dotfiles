@@ -1,5 +1,3 @@
-export SECONDS=0
-
 # shell is non-interactive. be done now!
 if [[ $- != *i* ]] ; then
   return
@@ -69,6 +67,3 @@ fi
 
 
 [[ -f ~/.bashrc_local ]] && source ~/.bashrc_local
-
-duration=$SECONDS
-echo Load: "$duration"s

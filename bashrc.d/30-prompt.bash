@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-# source: bash-it
+# based on bash-it powerline theme
 
 source $DOTFILES/bashrc.d/prompt/timer.bash
+timer_start
+
 source $DOTFILES/bashrc.d/prompt/colors.bash
 source $DOTFILES/bashrc.d/prompt/base.bash
 
