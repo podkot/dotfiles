@@ -7,8 +7,8 @@ if [[ -d $HOME/dotfiles ]]; then
         dotfiles-update
     popd
 else
-    type "apt-get" &> /dev/null && sudo apt-get install git curl
-    type "yum" &> /dev/null  && sudo yum install git curl
+    type "apt-get" &> /dev/null && sudo apt-get install -y git curl
+    type "yum" &> /dev/null  && sudo yum install -y git curl
 
     curl -L https://raw.githubusercontent.com/podkot/dotfiles/master/install | bash
     source $HOME/.bashrc

@@ -2,7 +2,7 @@
 
 source ~/.bashrc
 
-if [[ $IS_MAC == 1 ]]; then
+if [[ "$IS_MAC" == 1 ]]; then
     source $DOTFILES/bin/setup/mac.bash
     source $DOTFILES/bin/setup/osx.bash
 else
@@ -11,7 +11,7 @@ else
     command_exists yum && source $DOTFILES/bin/setup/centos.bash
 fi
 
-if [[ $IS_DESKTOP == 1 ]]; then
+if [[ "$IS_DESKTOP" == 1 ]]; then
     source $DOTFILES/bin/setup/desktop.bash
 fi
 

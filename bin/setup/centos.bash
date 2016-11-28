@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-sudo yum install tig mc vim editorconfig
+sudo yum install -y tig mc vim #editorconfig
 
 # RHEL7+
-sudo yum install the_silver_searcher
+sudo yum install -y the_silver_searcher
