@@ -4,5 +4,4 @@ git clone https://github.com/podkot/dotfiles.git ~/dotfiles
 mv ~/.bashrc ~/.bashrc.bak
 mv ~/.bash_profile ~/.bash_profile.bak
 ~/dotfiles/bin/dotfiles-sync
-source ~/.bashrc
-source ~/dotfiles/bin/dotfiles-setup
+~/dotfiles/bin/dotfiles-setup

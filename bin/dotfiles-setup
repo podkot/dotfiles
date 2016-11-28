@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
+source ~/.bashrc
+
 if [[ $IS_MAC == 1 ]]; then
-    source $DOTFILES/bin/setup/mac.sh
-    source $DOTFILES/bin/setup/osx.sh
+    source $DOTFILES/bin/setup/mac.bash
+    source $DOTFILES/bin/setup/osx.bash
 else
-    source $DOTFILES/bin/setup/linux.sh
+    source $DOTFILES/bin/setup/linux.bash
+    command_exists apt-get && source $DOTFILES/bin/setup/debian.bash
+    command_exists yum && source $DOTFILES/bin/setup/centos.bash
 fi
 
 if [[ $IS_DESKTOP == 1 ]]; then
-    source $DOTFILES/bin/setup/desktop.sh
+    source $DOTFILES/bin/setup/desktop.bash
 fi
 
-source $DOTFILES/bin/setup/common.sh
+source $DOTFILES/bin/setup/common.bash
 
 source $DOTFILES/bin/dotfiles-update
 

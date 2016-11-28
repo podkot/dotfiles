@@ -12,11 +12,11 @@ popd
 echo
 
 if [[ $IS_MAC == 1 ]]; then
-    source $DOTFILES/bin/update/mac.sh
+    source $DOTFILES/bin/update/mac.bash
 fi
 
 if [[ $IS_DESKTOP == 1 ]]; then
-    source $DOTFILES/bin/update/desktop.sh
+    source $DOTFILES/bin/update/desktop.bash
 fi
 
 command_exists dotfiles-on-update && dotfiles-on-update

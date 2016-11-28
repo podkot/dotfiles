@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ -d $HOME/dotfiles ]]; then
+    pushd $HOME/dotfiles
+        git pull
+        source $HOME/.bashrc
+        dotfiles-update
+    popd
+else
+    type "apt-get" &> /dev/null && sudo apt-get install git curl
+    type "yum" &> /dev/null  && sudo yum install git curl
+
+    curl -L https://raw.githubusercontent.com/podkot/dotfiles/master/install | bash
+    source $HOME/.bashrc
+fi
