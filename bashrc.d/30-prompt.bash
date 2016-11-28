@@ -195,7 +195,7 @@ function powerline_prompt_command() {
     # no magic in mc subshell
     if [ ! -z "$MC_SID" ]; then
         powerline_cwd_prompt
-        PS1="${CWD_PROMPT} mc ${LAST_STATUS_PROMPT}${PROMPT_CHAR}";
+        PS1="${CWD_PROMPT} mc ${LAST_STATUS_PROMPT}${PROMPT_CHAR} ";
         return
     fi
 

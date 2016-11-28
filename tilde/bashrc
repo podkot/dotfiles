@@ -4,7 +4,7 @@ alias re="DEBUG=1; time source ~/.bashrc"
 export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 
-if [[ `uname`=='Darwin' ]]; then
+if [[ `uname` == 'Darwin' ]]; then
     export IS_MAC=1
 else
     export IS_MAC=0

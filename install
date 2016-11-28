@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 git clone https://github.com/podkot/dotfiles.git ~/dotfiles
-mv ~/.bashrc ~/.bashrc.bak
-mv ~/.bash_profile ~/.bash_profile.bak
+[[ -f ~/.bashrc ]] && mv ~/.bashrc ~/.bashrc.bak
+[[ -f ~/.bash_profile ]] && mv ~/.bash_profile ~/.bash_profile.bak
 ~/dotfiles/bin/dotfiles-sync
 ~/dotfiles/bin/dotfiles-setup
