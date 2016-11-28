@@ -19,6 +19,8 @@ if [[ "$IS_DESKTOP" == 1 ]]; then
     source $DOTFILES/bin/update/desktop.bash
 fi
 
+source $DOTFILES/bin/update/common.bash
+
 command_exists dotfiles-on-update && dotfiles-on-update
 
 ### final step
