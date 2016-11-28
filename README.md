@@ -1,9 +1,17 @@
 # dotfiles
 
-while on mac, `xcode-select --install` first.
+Install on a server with `sshrc [server]`.
+
+Local installation:
 
 ```bash
 \curl -L https://raw.githubusercontent.com/podkot/dotfiles/master/install | bash
+```
+
+macos prerequisites:
+
+```bash
+xcode-select --install
 ```
 
 ubuntu prerequisites:

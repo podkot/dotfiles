@@ -1,8 +1,3 @@
-# shell is non-interactive. be done now!
-if [[ $- != *i* ]] ; then
-  return
-fi
-
 export DEBUG=${DEBUG:=0}
 alias re="DEBUG=1; time source ~/.bashrc"
 
@@ -35,21 +30,25 @@ function header() {
     echo -e "$(tput sgr 0 1)$(tput setaf 6)$1$(tput sgr0)"
 }
 
+# shell is non-interactive. be done now!
+if [[ $- != *i* ]] ; then
+  return
+fi
 
 [[ -f ~/.bashrc_vars ]] && source ~/.bashrc_vars
 
 
 if [[ -d $DOTFILES/bashrc.d ]]; then
   for file in $DOTFILES/bashrc.d/*.bash; do
-    if [[ $file == *"-desktop.bash" && $IS_DESKTOP == 0 ]]; then
+    if [[ "$file" == *"-desktop.bash" && "$IS_DESKTOP" == 0 ]]; then
         continue;
     fi
 
-    if [[ $file == *"-mac.bash" && $IS_MAC == 0 ]]; then
+    if [[ "$file" == *"-mac.bash" && "$IS_MAC" == 0 ]]; then
         continue;
     fi
 
-    if [[ $file == *"-linux.bash" && $IS_MAC == 1 ]]; then
+    if [[ "$file" == *"-linux.bash" && "$IS_MAC" == 1 ]]; then
         continue;
     fi
 
