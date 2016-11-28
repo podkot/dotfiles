@@ -5,6 +5,9 @@
 THEME_PROMPT_HOST='\H'
 
 SCM_CHECK=${SCM_CHECK:=true}
+SCM_CHECK_GIT=${SCM_CHECK_GIT:=true}
+SCM_CHECK_SVN=${SCM_CHECK_SVN:=true}
+SCM_CHECK_HG=${SCM_CHECK_HG:=true}
 
 SCM_THEME_PROMPT_DIRTY=' ✗'
 SCM_THEME_PROMPT_CLEAN=' ✓'
@@ -42,27 +45,49 @@ SCM_SVN_CHAR='⑆'
 SCM_NONE='NONE'
 SCM_NONE_CHAR='○'
 
-RVM_THEME_PROMPT_PREFIX=' |'
-RVM_THEME_PROMPT_SUFFIX='|'
+# RVM_THEME_PROMPT_PREFIX=' |'
+# RVM_THEME_PROMPT_SUFFIX='|'
 
-VIRTUALENV_THEME_PROMPT_PREFIX=' |'
-VIRTUALENV_THEME_PROMPT_SUFFIX='|'
+# VIRTUALENV_THEME_PROMPT_PREFIX=' |'
+# VIRTUALENV_THEME_PROMPT_SUFFIX='|'
 
-RBENV_THEME_PROMPT_PREFIX=' |'
-RBENV_THEME_PROMPT_SUFFIX='|'
+# RBENV_THEME_PROMPT_PREFIX=' |'
+# RBENV_THEME_PROMPT_SUFFIX='|'
 
-RBFU_THEME_PROMPT_PREFIX=' |'
-RBFU_THEME_PROMPT_SUFFIX='|'
+# RBFU_THEME_PROMPT_PREFIX=' |'
+# RBFU_THEME_PROMPT_SUFFIX='|'
 
 function scm {
-  if [[ "$SCM_CHECK" = false ]]; then SCM=$SCM_NONE
-  elif [[ -f .git/HEAD ]]; then SCM=$SCM_GIT
-  elif which git &> /dev/null && [[ -n "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then SCM=$SCM_GIT
-  elif [[ -d .hg ]]; then SCM=$SCM_HG
-  elif which hg &> /dev/null && [[ -n "$(hg root 2> /dev/null)" ]]; then SCM=$SCM_HG
-  elif [[ -d .svn ]]; then SCM=$SCM_SVN
-  else SCM=$SCM_NONE
+  if [[ "$SCM_CHECK" = false ]]; then
+    SCM=$SCM_NONE
+    return
   fi
+
+  SCM=
+
+  if [[  "$SCM_CHECK_GIT" = true ]]; then
+    if [[ -f .git/HEAD ]]; then SCM=$SCM_GIT
+    elif which git &> /dev/null && [[ -n "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then SCM=$SCM_GIT
+    fi
+
+    [[ ! -z $SCM ]] && return
+  fi
+
+  if [[ "$SCM_CHECK_HG" = true ]]; then
+    if [[ -d .hg ]]; then SCM=$SCM_HG
+    elif which hg &> /dev/null && [[ -n "$(hg root 2> /dev/null)" ]]; then SCM=$SCM_HG
+    fi
+
+    [[ ! -z $SCM ]] && return
+  fi
+
+  if [[ "$SCM_CHECK_SVN" = true ]]; then
+    [[ -d .svn ]] && SCM=$SCM_SVN
+
+    [[ ! -z $SCM ]] && return
+  fi
+
+  SCM=$SCM_NONE
 }
 
 function scm_prompt_char {
@@ -85,7 +110,7 @@ function scm_prompt_vars {
 }
 
 function scm_prompt_info {
-  scm
+  if [[ -z $SCM ]]; then scm; fi
   scm_prompt_char
   SCM_DIRTY=0
   SCM_STATE=''
@@ -237,102 +262,68 @@ function hg_prompt_vars {
     fi
 }
 
-function rvm_version_prompt {
-  if which rvm &> /dev/null; then
-    rvm=$(rvm tools identifier) || return
-    if [ $rvm != "system" ]; then
-      echo -e "$RVM_THEME_PROMPT_PREFIX$rvm$RVM_THEME_PROMPT_SUFFIX"
-    fi
-  fi
-}
-
-function rbenv_version_prompt {
-  if which rbenv &> /dev/null; then
-    rbenv=$(rbenv version-name) || return
-    $(rbenv commands | grep -q gemset) && gemset=$(rbenv gemset active 2> /dev/null) && rbenv="$rbenv@${gemset%% *}"
-    if [ $rbenv != "system" ]; then
-      echo -e "$RBENV_THEME_PROMPT_PREFIX$rbenv$RBENV_THEME_PROMPT_SUFFIX"
-    fi
-  fi
-}
-
-function rbfu_version_prompt {
-  if [[ $RBFU_RUBY_VERSION ]]; then
-    echo -e "${RBFU_THEME_PROMPT_PREFIX}${RBFU_RUBY_VERSION}${RBFU_THEME_PROMPT_SUFFIX}"
-  fi
-}
-
-function chruby_version_prompt {
-  if declare -f -F chruby &> /dev/null; then
-    if declare -f -F chruby_auto &> /dev/null; then
-      chruby_auto
-    fi
-
-    ruby_version=$(ruby --version | awk '{print $1, $2;}') || return
-
-    if [[ ! $(chruby | grep '*') ]]; then
-      ruby_version="${ruby_version} (system)"
-    fi
-    echo -e "${CHRUBY_THEME_PROMPT_PREFIX}${ruby_version}${CHRUBY_THEME_PROMPT_SUFFIX}"
-  fi
-}
-
-function ruby_version_prompt {
-  echo -e "$(rbfu_version_prompt)$(rbenv_version_prompt)$(rvm_version_prompt)$(chruby_version_prompt)"
-}
-
-function virtualenv_prompt {
-  if [[ -n "$VIRTUAL_ENV" ]]; then
-    virtualenv=`basename "$VIRTUAL_ENV"`
-    echo -e "$VIRTUALENV_THEME_PROMPT_PREFIX$virtualenv$VIRTUALENV_THEME_PROMPT_SUFFIX"
-  fi
-}
-
-function condaenv_prompt {
-  if [[ $CONDA_DEFAULT_ENV ]]; then
-    echo -e "${CONDAENV_THEME_PROMPT_PREFIX}${CONDA_DEFAULT_ENV}${CONDAENV_THEME_PROMPT_SUFFIX}"
-  fi
-}
-
-function py_interp_prompt {
-  py_version=$(python --version 2>&1 | awk '{print "py-"$2;}') || return
-  echo -e "${PYTHON_THEME_PROMPT_PREFIX}${py_version}${PYTHON_THEME_PROMPT_SUFFIX}"
-}
-
-function python_version_prompt {
-  echo -e "$(virtualenv_prompt)$(condaenv_prompt)$(py_interp_prompt)"
-}
-
-
-# backwards-compatibility
-# function git_prompt_info {
-#   git_prompt_vars
-#   echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
-# }
-
-# function svn_prompt_info {
-#   svn_prompt_vars
-#   echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
-# }
-
-# function hg_prompt_info() {
-#   hg_prompt_vars
-#   echo -e "$SCM_PREFIX$SCM_BRANCH:${SCM_CHANGE#*:}$SCM_STATE$SCM_SUFFIX"
-# }
-
-# function scm_char {
-#   scm_prompt_char
-#   echo -e "$SCM_CHAR"
-# }
-
-# function prompt_char {
-#     scm_char
-# }
-
-# function clock_char {
-#     if [[ "${THEME_CLOCK_CHECK}" = true ]]; then
-#         DATE_STRING=$(date +"%Y-%m-%d %H:%M:%S")
-#         echo -e "${bold_cyan}$DATE_STRING ${red}$CLOCK_CHAR"
+# function rvm_version_prompt {
+#   if which rvm &> /dev/null; then
+#     rvm=$(rvm tools identifier) || return
+#     if [ $rvm != "system" ]; then
+#       echo -e "$RVM_THEME_PROMPT_PREFIX$rvm$RVM_THEME_PROMPT_SUFFIX"
 #     fi
+#   fi
 # }
 
+# function rbenv_version_prompt {
+#   if which rbenv &> /dev/null; then
+#     rbenv=$(rbenv version-name) || return
+#     $(rbenv commands | grep -q gemset) && gemset=$(rbenv gemset active 2> /dev/null) && rbenv="$rbenv@${gemset%% *}"
+#     if [ $rbenv != "system" ]; then
+#       echo -e "$RBENV_THEME_PROMPT_PREFIX$rbenv$RBENV_THEME_PROMPT_SUFFIX"
+#     fi
+#   fi
+# }
+
+# function rbfu_version_prompt {
+#   if [[ $RBFU_RUBY_VERSION ]]; then
+#     echo -e "${RBFU_THEME_PROMPT_PREFIX}${RBFU_RUBY_VERSION}${RBFU_THEME_PROMPT_SUFFIX}"
+#   fi
+# }
+
+# function chruby_version_prompt {
+#   if declare -f -F chruby &> /dev/null; then
+#     if declare -f -F chruby_auto &> /dev/null; then
+#       chruby_auto
+#     fi
+
+#     ruby_version=$(ruby --version | awk '{print $1, $2;}') || return
+
+#     if [[ ! $(chruby | grep '*') ]]; then
+#       ruby_version="${ruby_version} (system)"
+#     fi
+#     echo -e "${CHRUBY_THEME_PROMPT_PREFIX}${ruby_version}${CHRUBY_THEME_PROMPT_SUFFIX}"
+#   fi
+# }
+
+# function ruby_version_prompt {
+#   echo -e "$(rbfu_version_prompt)$(rbenv_version_prompt)$(rvm_version_prompt)$(chruby_version_prompt)"
+# }
+
+# function virtualenv_prompt {
+#   if [[ -n "$VIRTUAL_ENV" ]]; then
+#     virtualenv=`basename "$VIRTUAL_ENV"`
+#     echo -e "$VIRTUALENV_THEME_PROMPT_PREFIX$virtualenv$VIRTUALENV_THEME_PROMPT_SUFFIX"
+#   fi
+# }
+
+# function condaenv_prompt {
+#   if [[ $CONDA_DEFAULT_ENV ]]; then
+#     echo -e "${CONDAENV_THEME_PROMPT_PREFIX}${CONDA_DEFAULT_ENV}${CONDAENV_THEME_PROMPT_SUFFIX}"
+#   fi
+# }
+
+# function py_interp_prompt {
+#   py_version=$(python --version 2>&1 | awk '{print "py-"$2;}') || return
+#   echo -e "${PYTHON_THEME_PROMPT_PREFIX}${py_version}${PYTHON_THEME_PROMPT_SUFFIX}"
+# }
+
+# function python_version_prompt {
+#   echo -e "$(virtualenv_prompt)$(condaenv_prompt)$(py_interp_prompt)"
+# }

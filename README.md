@@ -18,9 +18,11 @@ sudo apt-get install curl git
 
 ## bashrc.d
 
-`-mac.bash` scripts run only on macOS
-`-linux.bash` scripts run only on Linux
-`-desktop.bash` don't run in ssh session
+Don't forget to setup `~/.bashrc_vars`
+
+- `-mac.bash` - scripts that run only on macOS
+- `-linux.bash` - scripts that run only on Linux
+- `-desktop.bash` - scripts that don't run in ssh session
 
 ## sources
 

@@ -2,8 +2,9 @@
 
 # source: bash-it
 
-source $DOTFILES/bashrc.d/prompt/colors.sh
-source $DOTFILES/bashrc.d/prompt/base.sh
+source $DOTFILES/bashrc.d/prompt/timer.bash
+source $DOTFILES/bashrc.d/prompt/colors.bash
+source $DOTFILES/bashrc.d/prompt/base.bash
 
 THEME_PROMPT_SEPARATOR=""
 THEME_PROMPT_LEFT_SEPARATOR=""
@@ -38,6 +39,8 @@ THEME_PROMPT_USERINFO_MODE=${THEME_PROMPT_USERINFO_MODE:="default"}
 
 IN_VIM_PROMPT_COLOR=35
 IN_VIM_PROMPT_TEXT="vim"
+
+LAST_TIME_PROMPT_COLOR=55
 
 function set_rgb_color {
     if [[ "${1}" != "-" ]]; then
@@ -155,6 +158,27 @@ function powerline_in_vim_prompt {
   fi
 }
 
+function powerline_last_time_prompt {
+    if [[ "$PROMPT_LAST_COMMAND_TIME" = false ]]; then
+        LAST_TIME_PROMPT=""
+        return
+    fi
+
+    if [ -z "$timer_show" ]; then
+        LAST_TIME_PROMPT=""
+    else
+        local timer=" ${timer_show} "
+        LAST_TIME_PROMPT="$(set_rgb_color - ${LAST_TIME_PROMPT_COLOR})${timer}${normal}"
+        if [[ "${SEGMENT_AT_RIGHT}" -gt 0 ]]; then
+            LAST_TIME_PROMPT+=$(set_rgb_color ${LAST_THEME_COLOR} ${LAST_TIME_PROMPT_COLOR})${THEME_PROMPT_LEFT_SEPARATOR}${normal}
+            (( RIGHT_PROMPT_LENGTH += SEGMENT_AT_RIGHT ))
+        fi
+        RIGHT_PROMPT_LENGTH=$(( ${RIGHT_PROMPT_LENGTH} + ${#timer} ))
+        LAST_THEME_COLOR=${LAST_TIME_PROMPT_COLOR}
+        (( SEGMENT_AT_RIGHT += 1 ))
+    fi
+}
+
 function powerline_prompt_command() {
     local LAST_STATUS="$?"
     local MOVE_CURSOR_RIGHTMOST='\033[500C'
@@ -166,30 +190,45 @@ function powerline_prompt_command() {
     ## left prompt ##
     powerline_last_status_prompt LAST_STATUS
 
-    # no scm in mc subshell
-    if [ -z "$MC_SID" ]; then
-        powerline_scm_prompt
+    # no magic in mc subshell
+    if [ ! -z "$MC_SID" ]; then
         powerline_cwd_prompt
-        LEFT_PROMPT="${SCM_PROMPT}${CWD_PROMPT}${MOVE_CURSOR_RIGHTMOST}"
-    else
-        powerline_cwd_prompt
-        LEFT_PROMPT="${CWD_PROMPT}${MOVE_CURSOR_RIGHTMOST}"
+        PS1="${CWD_PROMPT} mc ${LAST_STATUS_PROMPT}${PROMPT_CHAR}";
+        return
     fi
+
+    [[ "$PROMPT_LAST_COMMAND_TIME" == "true" ]] && timer_stop
+
+    powerline_scm_prompt
+    powerline_cwd_prompt
+    LEFT_PROMPT="${SCM_PROMPT}${CWD_PROMPT}${MOVE_CURSOR_RIGHTMOST}"
 
     ## right prompt ##
     LAST_THEME_COLOR="-"
     powerline_shell_prompt
     powerline_clock_prompt
-    powerline_in_vim_prompt
+    if [ -z "$MC_SID" ]; then
+        powerline_last_time_prompt
+        powerline_in_vim_prompt
 
-    if [[ "${SEGMENT_AT_RIGHT}" -gt 0 ]]; then
-        LEFT_PROMPT+="${MOVE_CURSOR_RIGHTMOST}"
-        [[ "${SEGMENT_AT_RIGHT}" -eq 1 ]] && (( RIGHT_PROMPT_LENGTH-=1 ))
-        RIGHT_PROMPT="\033[${RIGHT_PROMPT_LENGTH}D$(set_rgb_color ${LAST_THEME_COLOR} -)${THEME_PROMPT_LEFT_SEPARATOR}${normal}"
-        RIGHT_PROMPT+="${IN_VIM_PROMPT}${CLOCK_PROMPT}${SHELL_PROMPT}${normal}"
+        if [[ "${SEGMENT_AT_RIGHT}" -gt 0 ]]; then
+            LEFT_PROMPT+="${MOVE_CURSOR_RIGHTMOST}"
+            [[ "${SEGMENT_AT_RIGHT}" -eq 1 ]] && (( RIGHT_PROMPT_LENGTH-=1 ))
+            RIGHT_PROMPT="\033[${RIGHT_PROMPT_LENGTH}D$(set_rgb_color ${LAST_THEME_COLOR} -)${THEME_PROMPT_LEFT_SEPARATOR}${normal}"
+            RIGHT_PROMPT+="${IN_VIM_PROMPT}${LAST_TIME_PROMPT}${CLOCK_PROMPT}${SHELL_PROMPT}${normal}"
+        fi
+
+        RIGHT_PROMPT="${RIGHT_PROMPT}\n"
+    else
+        RIGHT_PROMPT=' mc '
     fi
 
-    PS1="${LEFT_PROMPT}${RIGHT_PROMPT}\n${LAST_STATUS_PROMPT}${PROMPT_CHAR} "
+    PS1="${LEFT_PROMPT}${RIGHT_PROMPT}${LAST_STATUS_PROMPT}${PROMPT_CHAR} "
+    timer_reset
 }
+
+if [[ "$PROMPT_LAST_COMMAND_TIME" == "true" && -z "$MC_SID" ]]; then
+    trap 'timer_start' DEBUG
+fi
 
 PROMPT_COMMAND=powerline_prompt_command

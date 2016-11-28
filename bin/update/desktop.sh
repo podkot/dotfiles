@@ -55,7 +55,7 @@ fi
 # ruby
 if command_exists ruby-install; then
     header "Updating ruby"
-    which ruby | grep 2.2. || ruby-install ruby 2.2
+    which ruby | grep $RUBY_VERSION. || ruby-install ruby $RUBY_VERSION
     echo
 
     # gems

@@ -38,6 +38,8 @@ function header() {
 }
 
 
+[[ -f ~/.bashrc_vars ]] && source ~/.bashrc_vars
+
 
 if [[ -d $DOTFILES/bashrc.d ]]; then
   for file in $DOTFILES/bashrc.d/*.bash; do
