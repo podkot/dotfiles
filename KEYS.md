@@ -10,9 +10,6 @@
         - [insert](#insert)
         - [normal](#normal)
         - [visual](#visual)
-        - [plain visual mode](#plain-visual-mode)
-        - [block visual mode](#block-visual-mode)
-        - [linewise visual mode](#linewise-visual-mode)
 
 <!-- /MarkdownTOC -->
 
@@ -56,8 +53,8 @@ Misc plugins:
 - <kbd>ctrl</kbd><kbd>d</kbd> Multiple cursor down
 - <kbd>ctrl</kbd><kbd>u</kbd> Multiple cursor up
 - <kbd>ctrl</kbd><kbd>y</kbd><kbd>\</kbd> Emmet
-- <kbd>\</kbd><kbd>g</kbd> Toggle GitGutter
-- <kbd>\</kbd><kbd>/</kbd> Toggle line comment in normal and insert modes, toggle block comment in visual mode (TComment)
+- <kbd>\\</kbd><kbd>g</kbd> Toggle GitGutter
+- <kbd>\\</kbd><kbd>/</kbd> Toggle line comment in normal and insert modes, toggle block comment in visual mode (TComment)
 - <kbd>ctrl</kbd><kbd>f</kbd> Ack (ag)
 
 NERDTree:
@@ -92,6 +89,7 @@ NERDTree:
 `:help Normal-mode`
 
 go insert mode with:
+
 - <kbd>a</kbd> append after cursor
 - <kbd>i</kbd> insert before cursor
 - <kbd>A</kbd> append at end of line
@@ -106,20 +104,9 @@ go insert mode with:
 
 There are three different types of highlighting in visual mode. Each allows the user to highlight text in different ways. Commands that normally only affect one character, line, or area will affect the highlighted text (such as changing text to uppercase (<kbd>Ctrl</kbd><kbd>~</kbd>), deleting text (<kbd>d</kbd>), indenting lines (>>, <<, and =), and so forth).
 
-<a name="plain-visual-mode"></a>
-### plain visual mode
+- <kbd>v</kbd> - plain visual mode
+- <kbd>ctrl</kbd><kbd>v</kbd> - block visual mode, `:help visual-block`
+- <kbd>shift</kbd><kbd>v</kbd> - linewise visual mode
 
-<kbd>v</kbd>
 
-<a name="block-visual-mode"></a>
-### block visual mode
-
-`:help visual-block`
-
-<kbd>ctrl</kbd><kbd>v</kbd>
-
-<a name="linewise-visual-mode"></a>
-### linewise visual mode
-
-<kbd>shift</kbd><kbd>v</kbd>
 
