@@ -1,0 +1,23 @@
+#!/bin/bash
+
+show_help(){
+        echo Usage $0 domain
+}
+
+if [ -z "$1" ]; then
+        show_help
+        exit 1
+fi
+
+DOMAIN=$1
+
+FIRST_AUTHORITATIVE_NS=$(dig +nssearch $DOMAIN | sed -n 's/^SOA \([^ ]*\)\.[ ].*/\1/p' | head -1)
+
+echo
+
+if [[ -z "$FIRST_AUTHORITATIVE_NS" ]]; then
+    dig @$DIGNS_DEFAULT_NS $@
+else
+    echo Using authoritative nameserver $FIRST_AUTHORITATIVE_NS
+    dig @$FIRST_AUTHORITATIVE_NS $@
+fi

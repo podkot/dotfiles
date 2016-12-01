@@ -10,3 +10,5 @@ export RUBY_VERSION=2.2
 export PHP_VERSION=7.0
 export APACHE_VERSION=2.4
 
+# stuff
+export DIGNS_DEFAULT_NS=8.8.8.8
