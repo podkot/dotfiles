@@ -3,7 +3,7 @@
 Plugin 'ctrlpvim/ctrlp.vim'
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-let g:ctrlp_cmd = 'CtrlPMixed'          " search anything (in files, buffers and MRU files at the same time.)
+"let g:ctrlp_cmd = 'CtrlPMixed'          " search anything (in files, buffers and MRU files at the same time.)
 "let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 'wa'    " search for nearest ancestor like .git, .hg, and the directory of the current file
 let g:ctrlp_max_height = 15             " maxiumum height of match window
@@ -18,3 +18,19 @@ let g:ctrlp_custom_ignore = {
 
 " Open ctrlp with ctrl+p
 let g:ctrlp_map = '<C-p>'
+
+function! CtrlP_OpenAtCenter(...)
+  " find free window
+  for n in range(0, bufnr('$'))
+    if buflisted(n)
+      exe bufwinnr(n) . 'wincmd w'
+      break
+    endif
+  endfor
+  call call('ctrlp#acceptfile', a:000)
+endfunction
+
+let g:ctrlp_open_func = {
+\  'arg_type': 'dict',
+\  'files': 'CtrlP_OpenAtCenter',
+\}
