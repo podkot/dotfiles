@@ -54,9 +54,6 @@ function set_rgb_color {
 function powerline_shell_prompt {
     SHELL_PROMPT=""
     SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR}
-    if [[ $EUID -eq 0 ]]; then
-        SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_ROOT}
-    fi
 
     if [[ -n "${SSH_CLIENT}" ]]; then
         SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_SSH}
@@ -64,6 +61,11 @@ function powerline_shell_prompt {
     else
         SHELL_PROMPT="${USER}"
     fi
+
+    if [[ $EUID -eq 0 ]]; then
+        SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_ROOT}
+    fi
+
     RIGHT_PROMPT_LENGTH=$(( ${RIGHT_PROMPT_LENGTH} + ${#SHELL_PROMPT} + 2 ))
     SHELL_PROMPT="$(set_rgb_color - ${SHELL_PROMPT_COLOR}) ${SHELL_PROMPT} ${normal}"
     LAST_THEME_COLOR=${SHELL_PROMPT_COLOR}
