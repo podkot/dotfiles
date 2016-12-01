@@ -12,16 +12,14 @@ THEME_PROMPT_SEPARATOR=""
 THEME_PROMPT_LEFT_SEPARATOR=""
 
 SHELL_SSH_CHAR=${SHELL_SSH_CHAR:=" "}
-SHELL_THEME_PROMPT_COLOR=32
-SHELL_THEME_PROMPT_COLOR_SUDO=35
+SHELL_THEME_PROMPT_COLOR=35
+SHELL_THEME_PROMPT_COLOR_ROOT=160
 SHELL_THEME_PROMPT_COLOR_SSH=202
 
 SCM_NONE_CHAR=""
 SCM_GIT_CHAR=${POWERLINE_SCM_GIT_CHAR:=" "}
 PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:="❯"}
-
-SCM_THEME_PROMPT_CLEAN=""
-SCM_THEME_PROMPT_DIRTY=""
+ROOT_PROMPT_CHAR=${POWERLINE_ROOT_PROMPT_CHAR:="#"}
 
 SCM_THEME_PROMPT_CLEAN_COLOR=25
 SCM_THEME_PROMPT_DIRTY_COLOR=88
@@ -36,8 +34,6 @@ LAST_STATUS_THEME_PROMPT_COLOR=196
 CLOCK_THEME_PROMPT_COLOR=240
 
 THEME_PROMPT_CLOCK_FORMAT=${THEME_PROMPT_CLOCK_FORMAT:="%H:%M:%S"}
-
-THEME_PROMPT_USERINFO_MODE=${THEME_PROMPT_USERINFO_MODE:="default"}
 
 IN_VIM_PROMPT_COLOR=35
 IN_VIM_PROMPT_TEXT="vim"
@@ -58,32 +54,20 @@ function set_rgb_color {
 function powerline_shell_prompt {
     SHELL_PROMPT=""
     SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR}
-    if sudo -n uptime 2>&1 | grep -q "load"; then
-        SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_SUDO}
+    if [[ $EUID -eq 0 ]]; then
+        SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_ROOT}
     fi
-    case "${THEME_PROMPT_USERINFO_MODE}" in
-        "default")
-            if [[ -n "${SSH_CLIENT}" ]]; then
-                SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_SSH}
-                SHELL_PROMPT="${SHELL_SSH_CHAR}${USER}@${HOSTNAME}"
-            else
-                SHELL_PROMPT="${USER}"
-            fi
-            RIGHT_PROMPT_LENGTH=$(( ${RIGHT_PROMPT_LENGTH} + ${#SHELL_PROMPT} + 2 ))
-            SHELL_PROMPT="$(set_rgb_color - ${SHELL_PROMPT_COLOR}) ${SHELL_PROMPT} ${normal}"
-            LAST_THEME_COLOR=${SHELL_PROMPT_COLOR}
-            (( SEGMENT_AT_RIGHT += 1 ))
-            ;;
-        "sudo")
-            if [[ "${SHELL_PROMPT_COLOR}" == "${SHELL_THEME_PROMPT_COLOR_SUDO}" ]]; then
-                SHELL_PROMPT="!"
-                RIGHT_PROMPT_LENGTH=$(( ${RIGHT_PROMPT_LENGTH} + ${#SHELL_PROMPT} + 2 ))
-                SHELL_PROMPT="$(set_rgb_color - ${SHELL_PROMPT_COLOR}) ${SHELL_PROMPT} ${normal}"
-                LAST_THEME_COLOR=${SHELL_PROMPT_COLOR}
-                (( SEGMENT_AT_RIGHT += 1 ))
-            fi
-            ;;
-    esac
+
+    if [[ -n "${SSH_CLIENT}" ]]; then
+        SHELL_PROMPT_COLOR=${SHELL_THEME_PROMPT_COLOR_SSH}
+        SHELL_PROMPT="${SHELL_SSH_CHAR}${USER}@${HOSTNAME}"
+    else
+        SHELL_PROMPT="${USER}"
+    fi
+    RIGHT_PROMPT_LENGTH=$(( ${RIGHT_PROMPT_LENGTH} + ${#SHELL_PROMPT} + 2 ))
+    SHELL_PROMPT="$(set_rgb_color - ${SHELL_PROMPT_COLOR}) ${SHELL_PROMPT} ${normal}"
+    LAST_THEME_COLOR=${SHELL_PROMPT_COLOR}
+    (( SEGMENT_AT_RIGHT += 1 ))
 }
 
 function powerline_scm_prompt {
@@ -189,13 +173,19 @@ function powerline_prompt_command() {
     RIGHT_PROMPT_LENGTH=1
     RIGHT_PROMPT=""
 
+    if [[ $EUID -eq 0 ]]; then
+        CHAR=$ROOT_PROMPT_CHAR
+    else
+        CHAR=$PROMPT_CHAR
+    fi
+
     ## left prompt ##
     powerline_last_status_prompt LAST_STATUS
 
     # no magic in mc subshell
     if [ ! -z "$MC_SID" ]; then
         powerline_cwd_prompt
-        PS1="${CWD_PROMPT} mc ${LAST_STATUS_PROMPT}${PROMPT_CHAR} ";
+        PS1="${CWD_PROMPT} mc ${LAST_STATUS_PROMPT}${CHAR} ";
         return
     fi
 
@@ -215,7 +205,7 @@ function powerline_prompt_command() {
 
         if [[ "${SEGMENT_AT_RIGHT}" -gt 0 ]]; then
             LEFT_PROMPT+="${MOVE_CURSOR_RIGHTMOST}"
-            [[ "${SEGMENT_AT_RIGHT}" -eq 1 ]] && (( RIGHT_PROMPT_LENGTH-=1 ))
+            (( RIGHT_PROMPT_LENGTH-=1 ))
             RIGHT_PROMPT="\033[${RIGHT_PROMPT_LENGTH}D$(set_rgb_color ${LAST_THEME_COLOR} -)${THEME_PROMPT_LEFT_SEPARATOR}${normal}"
             RIGHT_PROMPT+="${IN_VIM_PROMPT}${LAST_TIME_PROMPT}${CLOCK_PROMPT}${SHELL_PROMPT}${normal}"
         fi
@@ -225,7 +215,7 @@ function powerline_prompt_command() {
         RIGHT_PROMPT=' mc '
     fi
 
-    PS1="${LEFT_PROMPT}${RIGHT_PROMPT}${LAST_STATUS_PROMPT}${PROMPT_CHAR} "
+    PS1="${LEFT_PROMPT}${RIGHT_PROMPT}${LAST_STATUS_PROMPT}${CHAR} "
     timer_reset
 }
 
