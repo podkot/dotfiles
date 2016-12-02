@@ -22,8 +22,8 @@ function timer_stop {
     local m=$(((delta_us / 60000000) % 60))
     local h=$((delta_us / 3600000000))
     # Goal: always show around 3 digits of accuracy
-    if ((h > 0)); then timer_show=${h}h ${m}m
-    elif ((m > 0)); then timer_show=${m}m ${s}s
+    if ((h > 0)); then timer_show="${h}h ${m}m"
+    elif ((m > 0)); then timer_show="${m}m ${s}s"
     elif ((s >= 10)); then timer_show=${s}.$((ms / 100))s
     elif ((s > 0)); then timer_show=${s}.$(printf %03d $ms)s
     elif ((ms >= 100)); then timer_show=${ms}ms
