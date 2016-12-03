@@ -40,7 +40,7 @@
 <a name="marker"></a>
 ## [marker](http://pindexis.github.io/marker/)
 <kbd>ctrl</kbd><kbd>space</kbd> - Search for commands that match the current written string  
-<kbd>ctrl</kbd><kbd>t</kbd> - place the cursor at the next placeholder, identified by the `%%` word or by `{{example}}`  
+<kbd>ctrl</kbd><kbd>f</kbd> - place the cursor at the next placeholder, identified by the `%%` word or by `{{example}}`  
 <kbd>ctrl</kbd><kbd>s</kbd> - Mark (save) the current written command string to the user_commands.txt (gitignored)  
 
 <a name="tig"></a>
