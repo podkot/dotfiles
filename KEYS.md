@@ -69,7 +69,7 @@
 <kbd>ctrl</kbd><kbd>p</kbd> CtrlP  
 <kbd>ctrl</kbd><kbd>d</kbd> Multiple cursor down  
 <kbd>ctrl</kbd><kbd>u</kbd> Multiple cursor up  
-<kbd>ctrl</kbd><kbd>y</kbd> <kbd>\</kbd> Emmet  
+<kbd>ctrl</kbd><kbd>y</kbd> <kbd>\\</kbd> Emmet  
 <kbd>\\</kbd> <kbd>g</kbd> Toggle GitGutter  
 <kbd>\\</kbd> <kbd>/</kbd> Toggle line comment in normal and insert modes, toggle block comment in visual mode (TComment)  
 <kbd>ctrl</kbd><kbd>f</kbd> Ack (ag)  
