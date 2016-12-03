@@ -35,7 +35,9 @@ if [[ $- != *i* ]] ; then
   return
 fi
 
-[[ -f ~/.bashrc_vars ]] && source ~/.bashrc_vars
+if [[ -f ~/.bashrc_vars ]]; then
+    source ~/.bashrc_vars
+fi
 
 
 if [[ -d $DOTFILES/bashrc.d ]]; then
@@ -53,16 +55,18 @@ if [[ -d $DOTFILES/bashrc.d ]]; then
     fi
 
     if [[ $DEBUG == 1 ]]; then
-        echo $file;
-        time source $file
+        echo "$file";
+        time source "$file"
         echo
         echo "---"
         echo
     else
-        source $file
+        source "$file"
     fi
   done
 fi
 
 
-[[ -f ~/.bashrc_local ]] && source ~/.bashrc_local
+if [[ -f ~/.bashrc_local ]]; then
+    source ~/.bashrc_local
+fi
