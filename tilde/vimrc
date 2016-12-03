@@ -4,9 +4,6 @@ let vimsettings = '~/dotfiles/vimrc.d'
 set nocompatible
 filetype off
 
-" to map C-q & C-s
-silent !stty -ixon > /dev/null 2>/dev/null
-
 " Setting up Vundle - the vim plugin bundler
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')

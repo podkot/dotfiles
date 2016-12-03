@@ -4,6 +4,7 @@
 
 - [bash](#bash)
     - [fzf](#fzf)
+    - [marker](#marker)
 - [tig](#tig)
 - [vim](#vim)
     - [General bindings:](#general-bindings)
@@ -35,6 +36,12 @@
 <kbd>ctrl</kbd><kbd>t</kbd> - Paste the selected files and directories onto the command line  
 <kbd>ctrl</kbd><kbd>r</kbd> - Paste the selected command from history onto the command line. Sort is disabled by default to respect chronological ordering. Press <kbd>ctrl</kbd><kbd>r</kbd> again to toggle sort  
 <kbd>alt</kbd><kbd>c</kbd> - cd into the selected directory  
+
+<a name="marker"></a>
+## [marker](http://pindexis.github.io/marker/)
+<kbd>ctrl</kbd><kbd>space</kbd> - Search for commands that match the current written string  
+<kbd>ctrl</kbd><kbd>t</kbd> - place the cursor at the next placeholder, identified by the `%%` word or by `{{example}}`  
+<kbd>ctrl</kbd><kbd>s</kbd> - Mark (save) the current written command string to the user_commands.txt (gitignored)  
 
 <a name="tig"></a>
 # [tig](http://jonas.nitro.dk/tig/manual.html#keys)

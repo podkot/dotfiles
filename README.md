@@ -20,6 +20,10 @@ ubuntu prerequisites:
 sudo apt-get install curl git
 ```
 
+known bugs:
+
+- marker: [read: read error: 0: Input/output error](https://github.com/pindexis/marker/issues/34)
+
 ## [commands](COMMANDS.md)
 
 ## [keys](KEYS.md)
