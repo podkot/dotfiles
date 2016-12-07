@@ -14,6 +14,6 @@ if command_exists perlbrew ; then
 else
     header "Installing perlbrew"
     \curl -L http://install.perlbrew.pl | bash
-    perlbrew install perl-5.16.3
-    cat $DOTFILES/data/perlbrew.txt | cpanm
+    perlbrew install perl-$PERL_VERSION
+    cat $DOTFILES/etc/perlbrew.txt | cpanm
 fi

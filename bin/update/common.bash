@@ -12,7 +12,7 @@ vim +PluginInstall +qall
 
 # .bashrc_vars
 if [[ ! -f ~/.bashrc_vars ]]; then
-    cp "$DOTFILES/bashrc_local_example.bash" ~/.bashrc_vars
+    cp "$DOTFILES/bashrc_vars_example.bash" ~/.bashrc_vars
 fi
 
 # marker
