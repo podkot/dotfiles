@@ -15,5 +15,7 @@ else
     header "Installing perlbrew"
     \curl -L http://install.perlbrew.pl | bash
     perlbrew install perl-$PERL_VERSION
+    perlbrew switch $PERL_VERSION
+    perlbrew install-cpanm
     cat $DOTFILES/etc/perlbrew.txt | cpanm
 fi
