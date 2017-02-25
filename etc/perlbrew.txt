@@ -123,6 +123,7 @@ Class::Load::XS
 Class::Loader
 Class::Method::Modifiers
 Class::MethodMaker
+Class::Mix
 Class::Singleton
 Class::Tiny
 Class::Unload
@@ -151,6 +152,7 @@ Crypt::DES_EDE3
 Crypt::DH
 Crypt::DH::GMP
 Crypt::DSA
+Crypt::Eksblowfish
 Crypt::IDEA
 Crypt::OpenSSL::RSA
 Crypt::OpenSSL::Random

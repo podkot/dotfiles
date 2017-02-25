@@ -19,6 +19,10 @@ if command_exists pip3 ; then
     header "Updating pip3"
     pip3 install -U pip
     pip3 install -U pyyaml
+    pip3 install -U bashate
+    pip3 install -U numpy scipy pandas
+    pip3 install -U scikit-learn matplotlib
+    pip3 install -U jupyter
 fi
 
 # n node
@@ -50,6 +54,9 @@ if command_exists npm ; then
     npm install -g jade-lint
     npm install -g yarn
     npm install -g tern
+    npm install -g feathers-cli
+    npm install -g sequelize-cli
+    npm install -g vue-cli
 fi
 
 # ruby

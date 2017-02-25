@@ -6,6 +6,9 @@
     # stash ignored, untracked, and tracked files
     staaash = stash --all
 
+    # init repo with empty root commit
+    it = !git init && git commit -m "root" --allow-empty
+
     # git find-merge [rev]
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
     # git show-merge [rev]
