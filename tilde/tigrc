@@ -1,0 +1,10 @@
+set blame-options = -C -C -C    # Blame lines from other files
+set reference-format = (branch) <tag> # Wrap branch names with () and tags with <>
+set line-graphics = utf-8
+set tab-size = 4
+set editor-line-number = 1 # The line number is passed as +<line-number> in front of the file name. Example: vim +10 tig.c
+set mouse = 0 # When enabled hold down Shift (or Option on Mac) to select text.
+
+bind main 9 @git-open %(commit) %(remote)
+bind diff 9 @git-open %(head) %(branch) %(directory) %(file) %(lineno)
+bind blame 9 @git-open %(head) %(branch) %(directory) %(file) %(lineno)
