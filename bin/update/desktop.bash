@@ -20,9 +20,9 @@ if command_exists pip3 ; then
     pip3 install -U pip
     pip3 install -U pyyaml
     pip3 install -U bashate
-    pip3 install -U numpy scipy pandas
-    pip3 install -U scikit-learn matplotlib
-    pip3 install -U jupyter
+    #pip3 install -U numpy scipy pandas
+    #pip3 install -U scikit-learn matplotlib
+    #pip3 install -U jupyter
 fi
 
 # n node
@@ -60,6 +60,7 @@ if command_exists npm ; then
 
     npm install -g javascript-typescript-langserver
     npm install -g vue-language-server
+    npm install -g grateful
 fi
 
 # ruby
@@ -86,7 +87,8 @@ if command_exists composer; then
     composer global require squizlabs/php_codesniffer
     composer global require wp-cli/wp-cli
     composer global require "aaemnnosttv/wp-cli-dotenv-command:^1.0"
-    composer global require mkusher/padawan
+    #composer global require mkusher/padawan
+    composer global require symfony/thanks
 
     composer global update
     echo

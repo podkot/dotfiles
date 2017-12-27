@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source ~/.bashrc
+
+if [[ -f composer.json ]]; then
+    command_exists composer && composer thanks
+fi
+
+if [[ -f package.json ]]; then
+    command_exists grateful && grateful
+fi
+
+
