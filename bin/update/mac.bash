@@ -16,4 +16,7 @@ brew cleanup
 brew cask cleanup
 brew cask list | xargs brew cask install #--force
 brew prune
+
+# https://github.com/Homebrew/brew/issues/2356
+brew reinstall vim
 echo

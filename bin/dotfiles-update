@@ -11,12 +11,12 @@ pushd "$DOTFILES"
 popd
 echo
 
-if [[ "$IS_MAC" == 1 ]]; then
-    source $DOTFILES/bin/update/mac.bash
-fi
-
 if [[ "$IS_DESKTOP" == 1 ]]; then
     source $DOTFILES/bin/update/desktop.bash
+fi
+
+if [[ "$IS_MAC" == 1 ]]; then
+    source $DOTFILES/bin/update/mac.bash
 fi
 
 source $DOTFILES/bin/update/common.bash

@@ -27,8 +27,8 @@ fi
 
 # n node
 if command_exists n; then
-    header "Updating stable node"
-    n stable;
+    header "Updating node"
+    node --version | grep $NODE_VERSION. || n $NODE_VERSION;
 fi;
 
 # npm
@@ -41,9 +41,9 @@ if command_exists npm ; then
     npm install -g bower
     npm install -g npm-check-updates
     # npm install -g node-inspector
-    npm install -g iron-node
-    npm install -g karma-cli
-    npm install -g github-release-from-changelog
+    # npm install -g iron-node
+    # npm install -g karma-cli
+    # npm install -g github-release-from-changelog
     npm install -g flow-bin
     npm install -g mocha
     npm install -g coffee
@@ -54,9 +54,12 @@ if command_exists npm ; then
     npm install -g jade-lint
     npm install -g yarn
     npm install -g tern
-    npm install -g feathers-cli
-    npm install -g sequelize-cli
+    # npm install -g feathers-cli
+    # npm install -g sequelize-cli
     npm install -g vue-cli
+
+    npm install -g javascript-typescript-langserver
+    npm install -g vue-language-server
 fi
 
 # ruby

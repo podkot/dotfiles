@@ -10,7 +10,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias apache-stop="sudo httpd -k stop"
 alias apache-start="sudo httpd -k start"
 alias apache-restart="sudo httpd -k restart"
-alias apache-conf="$EDITOR /usr/local/etc/apache2/$APACHE_VERSION/httpd.conf" # httpd -V | grep 'SERVER_CONFIG_FILE'
+alias apache-conf="$EDITOR /usr/local/etc/httpd/httpd.conf" # httpd -V | grep 'SERVER_CONFIG_FILE'
 
 
 alias memcached-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist"
@@ -28,6 +28,6 @@ alias mysql-restart="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.maria
 
 
 alias phpini="$EDITOR /usr/local/etc/php/$PHP_VERSION/php.ini" # php -i | grep 'Configuration File'
-alias vhosts="$EDITOR /usr/local/etc/apache2/$APACHE_VERSION/extra/httpd-vhosts.conf"
+alias vhosts="$EDITOR /usr/local/etc/httpd/extra/httpd-vhosts.conf"
 
 
