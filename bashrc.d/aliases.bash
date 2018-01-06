@@ -33,5 +33,5 @@ alias reload="exec $SHELL -l"
 
 # configs
 alias hosts="$EDITOR /etc/hosts"
-alias dotfiles="cd $DOTFILES && $EDITOR $DOTFILES ~/.bashrc_local ~/.bashrc_vars"
+alias dotfiles="cd $DOTFILES && $EDITOR $DOTFILES ~/.bashrc_local ~/.bashrc_vars ~/dotfiles/bin/update/desktop.bash"
 

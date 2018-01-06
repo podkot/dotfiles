@@ -12,7 +12,6 @@
 if command_exists pip ; then
     header "Updating pip"
     pip install -U pip
-    pip install -U licen
 fi
 
 if command_exists pip3 ; then
@@ -20,6 +19,7 @@ if command_exists pip3 ; then
     pip3 install -U pip
     pip3 install -U pyyaml
     pip3 install -U bashate
+    pip3 install -U licen
     #pip3 install -U numpy scipy pandas
     #pip3 install -U scikit-learn matplotlib
     #pip3 install -U jupyter
@@ -50,7 +50,6 @@ if command_exists npm ; then
     npm install -g coffeelint
     npm install -g gulp
     npm install -g webpack
-    npm install -g eslint
     npm install -g jade-lint
     npm install -g yarn
     npm install -g tern
@@ -61,6 +60,13 @@ if command_exists npm ; then
     npm install -g javascript-typescript-langserver
     npm install -g vue-language-server
     npm install -g grateful
+
+    npm install -g eslint
+    npm install -g eslint-plugin-regru
+    npm install -g babel-eslint
+
+    npm install -g yo
+    npm install -g generator-generator
 fi
 
 # ruby
