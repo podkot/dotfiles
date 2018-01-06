@@ -56,6 +56,7 @@ if command_exists npm ; then
     # npm install -g feathers-cli
     # npm install -g sequelize-cli
     npm install -g vue-cli
+    npm install -g caniuse-cmd
 
     npm install -g javascript-typescript-langserver
     npm install -g vue-language-server

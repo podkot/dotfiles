@@ -8,6 +8,7 @@ Algorithm::Bayesian
 Algorithm::C3
 Algorithm::Diff
 Algorithm::NGram
+Any::URI::Escape
 AnyEvent
 AnyEvent::ForkManager
 AnyEvent::HTTP
@@ -43,6 +44,7 @@ CPAN::Meta::Check
 CPAN::Meta::Requirements
 CPAN::Meta::YAML
 CPAN::outdated
+Cache
 Cache::Cache
 Cache::FastMmap
 Cache::Memcached::Fast
@@ -308,6 +310,7 @@ File::Flock
 File::HomeDir
 File::Listing
 File::Map
+File::NFSLock
 File::Next
 File::ReadBackwards
 File::Remove
@@ -319,12 +322,15 @@ File::Slurp
 File::Slurp::Tiny
 File::Temp
 File::TinyLock
+File::Type
 File::Which
 File::pushd
+Filesys::DiskUsage
 Filesys::Notify::Simple
 Font::TTF
 FormValidator::Simple
 FormValidator::Simple::Plugin::Trim
+FreezeThaw
 GD
 GD::SecurityImage
 GD::Thumbnail
@@ -358,6 +364,7 @@ Hash::Flatten
 Hash::Merge
 Hash::MoreUtils
 Hash::MultiValue
+Heap
 Hook::LexWrap
 IO::All
 IO::Capture
@@ -375,6 +382,8 @@ IO::Stringy
 IO::Tty
 IPC::Run3
 IPC::Shareable
+Imager
+Imager::QRCode
 Import::Into
 Inline
 JSON
@@ -412,7 +421,10 @@ List::MoreUtils
 List::SomeUtils
 List::SomeUtils::XS
 List::Util
+Locale::Babelfish
 Locale::Maketext::Lexicon
+Log::Any
+Log::Any::Adapter::Callback
 Log::Contextual
 Log::Dispatch
 Log::Dispatch::DBI
@@ -470,6 +482,7 @@ Module::ScanDeps
 Module::Util
 Mojolicious
 Mojolicious::Plugin::Authentication
+Mojolicious::Plugin::Dbi
 Mojolicious::Plugin::TtRenderer
 MongoDB
 Moo
@@ -630,6 +643,7 @@ SUPER
 Safe::Isa
 Scalar::Does
 Scope::Guard
+Search::Elasticsearch
 Set::Infinite
 Set::Object
 Set::Scalar
@@ -814,6 +828,7 @@ XML::Writer
 YAML
 YAML::LibYAML
 YAML::Syck
+YAML::SyckWrapper
 YAML::Tiny
 aliased
 autobox
