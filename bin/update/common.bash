@@ -32,3 +32,13 @@ pathtodiff=$DOTFILES/bin/diff-so-fancy
 curl -o $pathtodiff https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
 chmod +x $pathtodiff
 unset pathtodiff
+
+# git when-merged
+if [[ -d "$DOTFILES/lib/git-when-merged/" ]]; then
+    header "Updating git-when-merged"
+    pushd "$DOTFILES/lib/git-when-merged"
+        git pull
+    popd
+fi
+
+

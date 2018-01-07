@@ -4,4 +4,5 @@ lib
 !lib/.gitkeep
 bin/dropboxes.sh
 bin/subl
+bin/git-when-merged
 etc/marker/user_commands.txt
