@@ -5,5 +5,8 @@ sudo yum install -y mc
 sudo yum install -y vim
 # sudo yum install -y editorconfig
 
+sudo yum install -y python-pip
+sudo pip install mycli
+
 # RHEL7+
 sudo yum install -y the_silver_searcher
