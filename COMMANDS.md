@@ -10,7 +10,6 @@
 - `mkd DIR` - Create a new directory and enter it
 - `o [PATH]` - with no arguments opens the current directory, otherwise opens the given location
 - `phpserver [port]` - Start a PHP server from a directory, optionally specifying the port (Requires PHP 5.4.0+)
-- `r ABBR` - [sman](https://github.com/tokozedg/sman), a command-line snippet manager. `s s ABBR` for show, `r ABBR` for run, `s ls` for list
 - `release major|minor|patch` - Releases the next version of the product to npm or Bower
 - `server [port]` - Start an HTTP server from a directory, optionally specifying the port 
 - `shipit` - [Minimalistic SSH deployment](https://github.com/sapegin/shipit)
