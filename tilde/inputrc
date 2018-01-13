@@ -1,0 +1,14 @@
+# From http://www.ukuug.org/events/linux2003/papers/bash_tips/
+# Incremental searching with Up and Down. Type 'ssh <up>' to get the last 'ssh' command you used
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# https://github.com/scop/bash-completion
+set show-all-if-ambiguous on
+set visible-stats on
+set page-completions off
+
+set colored-completion-prefix on
+set colored-stats on
+set show-all-if-unmodified on
+set completion-query-items 200
