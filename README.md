@@ -28,13 +28,18 @@ known bugs:
 
 ## [keys](KEYS.md)
 
-## bashrc.d
+## \*rc.d
 
 Don't forget to setup `~/.bashrc_vars`
 
-- `bashrc.d` - scripts, running at `bash` startup
-- `shrc.d` - scripts, running at both `bash` and `zsh` startup
-- `zshrc.d` - scripts, running at `zsh` startup
+rc.d folders:
+
+- `bashrc.d` - scripts that run at `bash` startup
+- `shrc.d` - scripts that run at both `bash` and `zsh` startup
+- `vimrc.d` - vim-scripts that run at `vim` startup
+- `zshrc.d` - scripts that run at `zsh` startup
+
+\*shrc.d scripts:
 
 - `-mac.sh` - scripts that run only on macOS
 - `-linux.sh` - scripts that run only on Linux
