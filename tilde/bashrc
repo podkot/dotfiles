@@ -1,34 +1,9 @@
 export DEBUG=${DEBUG:=0}
-alias re="DEBUG=1; time source ~/.bashrc"
-
 export DOTFILES="$HOME/dotfiles"
-export PATH="$PATH:$DOTFILES/bin"
+alias re="time source ~/.bashrc"
+alias de="DEBUG=1; time source ~/.bashrc"
 
-if [[ `uname` == 'Darwin' ]]; then
-    export IS_MAC=1
-else
-    export IS_MAC=0
-fi
-
-if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-  SESSION_TYPE=remote/ssh
-else
-  case $(ps -o comm= -p $PPID) in
-    sshd|*/sshd) SESSION_TYPE=remote/ssh;;
-  esac
-fi
-if [[ -z $SESSION_TYPE ]]; then
-    export IS_DESKTOP=1
-else
-    export IS_DESKTOP=0
-fi
-
-function command_exists() {
-    type "$1" &> /dev/null ;
-}
-function header() {
-    echo -e "$(tput sgr 0 1)$(tput setaf 6)$1$(tput sgr0)"
-}
+source "$DOTFILES/shrc.d/inc/helpers.sh"
 
 # shell is non-interactive. be done now!
 if [[ $- != *i* ]] ; then
@@ -41,29 +16,15 @@ fi
 
 
 if [[ -d $DOTFILES/bashrc.d ]]; then
-  for file in $DOTFILES/bashrc.d/*.bash; do
-    if [[ "$file" == *"-desktop.bash" && "$IS_DESKTOP" == 0 ]]; then
-        continue;
-    fi
+    for file in $DOTFILES/bashrc.d/*.sh; do
+        import $file
+    done
+fi
 
-    if [[ "$file" == *"-mac.bash" && "$IS_MAC" == 0 ]]; then
-        continue;
-    fi
-
-    if [[ "$file" == *"-linux.bash" && "$IS_MAC" == 1 ]]; then
-        continue;
-    fi
-
-    if [[ $DEBUG == 1 ]]; then
-        echo "$file";
-        time source "$file"
-        echo
-        echo "---"
-        echo
-    else
-        source "$file"
-    fi
-  done
+if [[ -d $DOTFILES/shrc.d ]]; then
+    for file in $DOTFILES/shrc.d/*.sh; do
+        import $file
+    done
 fi
 
 

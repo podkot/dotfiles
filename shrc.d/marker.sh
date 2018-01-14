@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 if [[ -d "$DOTFILES/lib/marker" ]]; then
     export MARKER_DATA_HOME="$DOTFILES/etc/marker"
     export MARKER_HOME="$DOTFILES/lib/marker"

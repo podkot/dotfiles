@@ -18,6 +18,12 @@ if [[ ! -f ~/.bashrc_vars ]]; then
     cp "$DOTFILES/bashrc_vars_example.bash" ~/.bashrc_vars
 fi
 
+# antybody
+if command_exists antibody; then
+    antibody bundle < "$DOTFILES/etc/zsh_plugins.txt" > ~/.zsh_plugins.sh
+    antibody update
+fi
+
 # marker
 if [[ -d "$DOTFILES/lib/marker/" ]]; then
     header "Updating marker"

@@ -2,11 +2,11 @@
 
 # based on bash-it powerline theme
 
-source $DOTFILES/bashrc.d/prompt/timer.bash
+source $DOTFILES/bashrc.d/prompt/timer.sh
 timer_start
 
-source $DOTFILES/bashrc.d/prompt/colors.bash
-source $DOTFILES/bashrc.d/prompt/base.bash
+source $DOTFILES/bashrc.d/prompt/colors.sh
+source $DOTFILES/bashrc.d/prompt/base.sh
 
 THEME_PROMPT_SEPARATOR=""
 THEME_PROMPT_LEFT_SEPARATOR=""

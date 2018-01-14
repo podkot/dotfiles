@@ -1,0 +1,8 @@
+chrissicool/zsh-256color
+bhilburn/powerlevel9k
+
+robbyrussell/oh-my-zsh
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zdharma/fast-syntax-highlighting
+ytet5uy4/fzf-widgets
