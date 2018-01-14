@@ -32,9 +32,13 @@ known bugs:
 
 Don't forget to setup `~/.bashrc_vars`
 
-- `-mac.bash` - scripts that run only on macOS
-- `-linux.bash` - scripts that run only on Linux
-- `-desktop.bash` - scripts that don't run in ssh session
+- `bashrc.d` - scripts, running at `bash` startup
+- `shrc.d` - scripts, running at both `bash` and `zsh` startup
+- `zshrc.d` - scripts, running at `zsh` startup
+
+- `-mac.sh` - scripts that run only on macOS
+- `-linux.sh` - scripts that run only on Linux
+- `-desktop.sh` - scripts that don't run in ssh session
 
 ## sources
 
