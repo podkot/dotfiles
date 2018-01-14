@@ -50,3 +50,10 @@ function import() {
         source "$1"
     fi
 }
+
+function antiup() {
+    if command_exists antibody; then
+        antibody bundle < "$DOTFILES/etc/zsh_plugins.txt" > ~/.zsh_plugins.sh
+        antibody update
+    fi
+}

@@ -19,10 +19,7 @@ if [[ ! -f ~/.bashrc_vars ]]; then
 fi
 
 # antybody
-if command_exists antibody; then
-    antibody bundle < "$DOTFILES/etc/zsh_plugins.txt" > ~/.zsh_plugins.sh
-    antibody update
-fi
+antiup
 
 # marker
 if [[ -d "$DOTFILES/lib/marker/" ]]; then
