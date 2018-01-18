@@ -587,6 +587,7 @@ Parallel::ForkManager
 Params::Classify
 Params::Util
 Params::Validate
+Parse::BooleanLogic
 Parse::CPAN::Meta
 Parse::Crontab
 Parse::RecDescent
