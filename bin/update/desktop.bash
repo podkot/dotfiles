@@ -12,6 +12,13 @@
 if command_exists pip ; then
     header "Updating pip"
     pip install -U pip
+    pip install -U psutil
+fi
+
+if command_exists pip2 ; then
+    header "Updating pip2"
+    pip2 install -U pip
+    pip2 install -U psutil
 fi
 
 if command_exists pip3 ; then
