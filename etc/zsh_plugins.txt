@@ -7,3 +7,4 @@ zsh-users/zsh-autosuggestions
 zdharma/fast-syntax-highlighting
 ytet5uy4/fzf-widgets
 zlsun/solarized-man
+hlissner/zsh-autopair
