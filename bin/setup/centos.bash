@@ -4,6 +4,8 @@ sudo yum install -y tig
 sudo yum install -y mc
 sudo yum install -y vim
 # sudo yum install -y editorconfig
+sudo yum install -y httpie
+sudo yum install -y git-extras
 
 sudo yum install -y python-pip
 sudo pip install mycli
