@@ -2,7 +2,8 @@
 
 <!-- MarkdownTOC autolink=true autoanchor=true bracket=round depth=0 -->
 
-- [bash](#bash)
+- [shell](#shell)
+    - [bash](#bash)
     - [fzf](#fzf)
     - [marker](#marker)
 - [tig](#tig)
@@ -19,8 +20,11 @@
 
 <!-- /MarkdownTOC -->
 
+<a name="shell"></a>
+# shell
+
 <a name="bash"></a>
-# bash
+## bash
 
 <kbd>ctrl</kbd><kbd>w</kbd> - Delete the word before the cursor  
 <kbd>ctrl</kbd><kbd>k</kbd> - Delete to the end of line  
