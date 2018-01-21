@@ -67,4 +67,3 @@ git tags##Show verbose output about tags
 git touch {{file}}##Call touch on the given file, and add it to the current index
 git upstream {{branch}}##Rebase over upstream/branch
 git upstream##Rebase over upstream/master
-
