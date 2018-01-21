@@ -10,6 +10,7 @@
     - [General bindings:](#general-bindings)
     - [Misc plugins:](#misc-plugins)
     - [NERDTree:](#nerdtree)
+    - [Tig:](#tig-1)
     - [commands](#commands)
     - [modes](#modes)
         - [insert](#insert)
@@ -89,6 +90,12 @@
 <kbd>m</kbd> <kbd>m</kbd> move  
 <kbd>m</kbd> <kbd>r</kbd> reveal in Finder (macOS specific)  
 
+<a name="tig-1"></a>
+## Tig:
+
+<kbd>\\</kbd> <kbd>t</kbd> open tig with current file
+<kbd>\\</kbd> <kbd>T</kbd> open tig with Project root path
+<kbd>\\</kbd> <kbd>gr</kbd> open tig grep
 
 <a name="commands"></a>
 ## commands
