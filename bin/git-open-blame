@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+bin="$(dirname "$0")"
+source $bin/inc/git.sh
+_git-open-file "$@" blame
