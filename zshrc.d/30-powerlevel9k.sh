@@ -4,13 +4,19 @@
 # brew cask install font-firacode-nerd-font
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vcs dir dir_writable newline status root_indicator)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(history command_execution_time time context)
 
 #POWERLEVEL9K_SHOW_CHANGESET='true'
 #git-untracked
 POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-hook-detail-info git-aheadbehind git-stash git-remotebranch git-tagname)
+
+if [ ! -z "$MC_SID" ]; then
+    PROMPT="${PWD/#$HOME/~} "
+    PROMPT+='%{'
+    PROMPT+='%(!.#.$)'
+    PROMPT+='%} '
+fi
 
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
