@@ -1,0 +1,70 @@
+git amend##Amend the currently staged files to the latest commit
+git archive-file##Creates an zip archive of the current git repository
+git authors##Populates the file matching authors|contributors -i with the authors of commits, according to the number of commits per author
+git back {{number}}##Removes the latest commits, and add their changes to your staging area.
+git branches##Show verbose output about branches
+git c##Clone a repository including all submodules
+git ca##Commit all changes
+git changelog##Generates a changelog from git(1) tags (annotated or lightweight) and commit messages
+git ci##Git commit
+git clear##Does a hard reset and deletes all untracked files from the working directory, including those in .gitignore
+git clear-soft##Does a hard reset and deletes all untracked files from the working directory, excluding those in .gitignore
+git co##Git checkout
+git commits-since {{yesterday}}##List commits since date (defaults to "last week")
+git contrib {{author}}##Output author's contributions to a project
+git contributors##List contributors with number of commits
+git count##Output commit count
+git d##Show the diff between the latest commit and the current state
+git delete-branch {{branch}}##Delete local and remote branch name:
+git delete-merged-branches##Deletes branches that are listed in git branch --merged
+git delete-submodule {{name}}##Delete submodule name
+git delete-tag {{tag}}##Delete local and remote tag name
+git di {{number}}##Shows the diff between the state `$number` revisions ago and the current state
+git dm##Remove branches that have already been merged with master, a.k.a. ‘delete merged’
+git effort --above {{15}} {{src/*}}##Displays "effort" statistics, currently just the number of commits per file
+git effort##Displays "effort" statistics, currently just the number of commits per file
+git fb {{commit}}##Find branches containing commit
+git fc {{code}}##Find commits by source code
+git find-merge {{revision}}##Find the merge commit
+git fm {{message}}##Find commits by commit message
+git force-clone {{remote_url}} {{destination_path}}##If the clone target directory exists and is a git repository, reset its contents to a clone of the remote
+git fork {{repo}}##For repo from github. Either full url or short username/repo is supported
+git ft {{commit}}##Find tags containing commit
+git gh-pages##Sets up the gh-pages branch
+git go {{branch}}##Switch to a branch, creating it if necessary
+git hist##Git history graph = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+git info##Show information about the repo
+git it##Init repo with empty root commit
+git local-commits##List all commits on the local branch that have not yet been sent to origin
+git merge-into {{dest}}##Merge current branch into dest, and keep yourself on current branch
+git merge-into {{src}} {{dest}}##Merge src branch into dest, and keep yourself on current branch
+git mpr {{pr_number}} {{branch}}##Merge GitHub pull request on top of the current branch or,
+git mr {{id_or_url}}##Checks out a merge request from GitLab
+git obliterate {{file}}##Completely remove a file from the repository, including past commits and tags
+git p##Pull in remote changes for the current repository and all its submodules
+git pr {{id_or_url}} {{upstream}}##Checks out a pull request from GitHub, with remote specified
+git pr {{id_or_url}}##Checks out a pull request from GitHub
+git pull-request##Create pull request via commandline
+git reb {{number}}##Interactive rebase with the given number of latest commits= "!r() { git rebase -i HEAD~$1; }; r"
+git remotes##Show verbose output about tags remotes
+git rename-branch {{new_name}} {{old_name}}##Rename a branch locally, and sync to remote via git push.
+git rename-branch {{new_name}}##Rename current branch locally, and sync to remote via git push.
+git rename-tag {{old_name}} {{new_name}}##Rename a tag (locally and remotely).
+git retag {{tag}}##Remove the old tag with this name and tag the latest commit with it.
+git s##View the current working tree status using the short format
+git show-merge {{revision}}##Show the merge commit
+git show-merged-branches##Show all branches merged in to current HEAD
+git show-tree##Show the decorated graph view of one liner summarized commits from all branches
+git show-unmerged-branches##Show all branches not merged in to current HEAD
+git squash {{branch}}##Merge commits from src-branch into the current branch as a single commit
+git staaash##Stash ignored, untracked, and tracked files
+git staash##Stash untracked and tracked files
+git stamp {{line}}##Stamp the last commit message (append a line to it)
+git standup -a {{author}} -d {{7}}##Recall what you did or find what someone else did in a given range of time
+git stsh##Stash only unstaged changes to tracked files
+git summary##Outputs a repo summary
+git tags##Show verbose output about tags
+git touch {{file}}##Call touch on the given file, and add it to the current index
+git upstream {{branch}}##Rebase over upstream/branch
+git upstream##Rebase over upstream/master
+
