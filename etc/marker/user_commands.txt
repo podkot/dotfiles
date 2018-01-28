@@ -41,6 +41,7 @@ git merge-into {{src}} {{dest}}##Merge src branch into dest, and keep yourself o
 git mpr {{pr_number}} {{branch}}##Merge GitHub pull request on top of the current branch or,
 git mr {{id_or_url}}##Checks out a merge request from GitLab
 git obliterate {{file}}##Completely remove a file from the repository, including past commits and tags
+git open-pr##Create new Pull Request (PR) in github. Supports PR to upstream
 git p##Pull in remote changes for the current repository and all its submodules
 git pr {{id_or_url}} {{upstream}}##Checks out a pull request from GitHub, with remote specified
 git pr {{id_or_url}}##Checks out a pull request from GitHub

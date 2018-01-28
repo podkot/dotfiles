@@ -69,6 +69,36 @@ function _git-open-file() {
     _browser $url
 }
 
+# open new github PR
+# https://github.com/caarlos0/zsh-open-pr/blob/master/git-open-pr.sh
+_get_repo() {
+  echo "$1" | sed -e "s/.git$//" -e "s/.*github.com[:/]\(.*\)/\1/"
+}
+
+function _git-open-pr() {
+  local upstream origin branch repo pr_url target url
+
+  upstream="$(git config --get remote.upstream.url)"
+  origin="$(git config --get remote.origin.url)"
+  branch="$(git symbolic-ref --short HEAD)"
+  repo="$(_get_repo "$origin")"
+  pr_url="https://github.com/$repo/pull/new"
+  target="$1"
+  test -z "$target" && target=$(git for-each-ref --format='%(upstream:short)' "$(git symbolic-ref -q HEAD)" | cut -d '/' -f 2)
+  test -z "$target" && target="master"
+
+  if [ -z "$upstream" ]; then
+    url="$pr_url/$target...$branch"
+  else
+    local origin_name upstream_name
+    origin_name="$(echo "$repo" | cut -f1 -d'/')"
+    upstream_name="$(_get_repo "$upstream" | cut -f1 -d'/')"
+    url="$pr_url/$upstream_name:$target...$origin_name:$branch"
+  fi
+
+  _browser $url
+}
+
 
 # get current open browser command
 function _browser() {
