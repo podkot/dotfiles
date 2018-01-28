@@ -162,6 +162,7 @@
 [diff]
     # Detect copies as well as renames
     renames = copies
+	renameLimit = 6000
 
 [diff "catdoc"]
     textconv = catdoc
