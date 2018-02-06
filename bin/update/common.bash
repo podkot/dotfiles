@@ -44,4 +44,9 @@ if [[ -d "$DOTFILES/lib/git-when-merged/" ]]; then
     popd
 fi
 
-
+# rmate (rsubl)
+header "Updating rmate (rsubl)"
+pathtormate=$DOTFILES/bin/rsubl
+curl -o $pathtormate https://raw.githubusercontent.com/aurora/rmate/master/rmate
+chmod +x $pathtormate
+unset pathtormate
