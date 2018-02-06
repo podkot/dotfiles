@@ -35,5 +35,5 @@ alias reload="exec $SHELL -l"
 alias hosts="$EDITOR /etc/hosts"
 alias dotfiles="cd $DOTFILES && $EDITOR $DOTFILES ~/.bashrc_local ~/.bashrc_vars ~/dotfiles/bin/update/desktop.bash"
 
+# rsubl (rmate), https://packagecontrol.io/packages/RemoteSubl
 alias sshr="ssh -R 52698:localhost:52698 "
-
