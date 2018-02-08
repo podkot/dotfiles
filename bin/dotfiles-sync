@@ -2,7 +2,7 @@
 
 """
 Dotfiles syncronization.
-Makes symlinks for all files: ~/dotfiles/tilde/bashrc => ~/.bashrc
+Makes symlinks for all files: ~/dotfiles/tilde/.bashrc => ~/.bashrc
 Based on https://gist.github.com/490016
 """
 
@@ -24,19 +24,15 @@ def force_remove(path):
 
 def is_link_to(link, dest):
 	is_link = os.path.islink(link)
-	is_link = is_link and os.readlink(link).rstrip('/') == dest.rstrip('/')
+	is_link = is_link and os.readlink(link) == dest
 	return is_link
 
 
 def main():
 	os.chdir(os.path.expanduser(SOURCE_DIR))
-	for filename in [file for file in glob.glob('*') if file not in EXCLUDE]:
-		dotfile = filename
-		if filename not in NO_DOT_PREFIX:
-			dotfile = '.' + dotfile
-		dotfile = os.path.join(os.path.expanduser('~'), dotfile)
+	for filename in [file for file in glob.glob('.*') if file not in EXCLUDE]:
+		dotfile = os.path.join(os.path.expanduser('~'), filename)
 		source = os.path.join(SOURCE_DIR, filename).replace('~', '.')
-
 		# Check that we aren't overwriting anything
 		if os.path.lexists(dotfile):
 			if is_link_to(dotfile, source):
