@@ -58,3 +58,7 @@ if [[ ! -d "$DOTFILES/lib/iterm2" ]]; then
 fi
 curl -L https://iterm2.com/shell_integration/zsh -o "$DOTFILES/lib/iterm2/iterm2_shell_integration.zsh"
 curl -L https://iterm2.com/shell_integration/bash -o "$DOTFILES/lib/iterm2/iterm2_shell_integration.bash"
+
+# antibody
+command_exists antibody || curl -sL git.io/antibody | bash -s
+
