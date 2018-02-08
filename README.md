@@ -24,6 +24,11 @@ sudo apt-get install curl git
 
 ## [keys](KEYS.md)
 
+## [iTerm2 integration](https://iterm2.com/documentation-shell-integration.html):
+
+- You can right-click on a filename (e.g., in the output of ls) and select Download with scp from hostname**, and iTerm2 will download the file for you.
+- If you drop a file (e.g., from Finder) into iTerm2 while holding the option key, iTerm2 will offer to upload the file via scp to the remote host into the directory you were in on the line you dropped the file on.
+
 ## \*rc.d
 
 Don't forget to setup `~/.bashrc_vars`

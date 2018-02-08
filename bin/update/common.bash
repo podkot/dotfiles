@@ -50,3 +50,11 @@ pathtormate=$DOTFILES/bin/rsubl
 curl -o $pathtormate https://raw.githubusercontent.com/aurora/rmate/master/rmate
 chmod +x $pathtormate
 unset pathtormate
+
+# iterm2 integration
+header "Updating iTerm2 integrations"
+if [[ ! -d "$DOTFILES/lib/iterm2" ]]; then
+    mkdir "$DOTFILES/lib/iterm2"
+fi
+curl -L https://iterm2.com/shell_integration/zsh -o "$DOTFILES/lib/iterm2/iterm2_shell_integration.zsh"
+curl -L https://iterm2.com/shell_integration/bash -o "$DOTFILES/lib/iterm2/iterm2_shell_integration.bash"
