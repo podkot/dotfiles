@@ -62,3 +62,11 @@ curl -L https://iterm2.com/shell_integration/bash -o "$DOTFILES/lib/iterm2/iterm
 # antibody
 command_exists antibody || curl -sL git.io/antibody | bash -s
 
+# even-better-ls
+if [[ -d "$DOTFILES/lib/even-better-ls/" ]]; then
+    header "Updating even-better-ls"
+    pushd "$DOTFILES/lib/even-better-ls"
+        git pull
+    popd
+fi
+

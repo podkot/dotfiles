@@ -15,3 +15,11 @@ if [[ ! -d "$DOTFILES/lib/git-when-merged/" ]]; then
         ln -s "$DOTFILES/lib/git-when-merged/bin/git-when-merged" "$DOTFILES/bin/git-when-merged"
     popd
 fi
+
+# even-better-ls
+if [[ ! -d "$DOTFILES/lib/even-better-ls/" ]]; then
+    pushd "$DOTFILES/lib"
+        git clone git@github.com:illinoisjackson/even-better-ls.git
+        chmod +x even-better-ls/ls_colors_generator.py
+    popd
+fi
