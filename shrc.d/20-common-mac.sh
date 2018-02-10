@@ -1,4 +1,4 @@
-export EDITOR="subl"
+export EDITOR="subl -w"
 
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
