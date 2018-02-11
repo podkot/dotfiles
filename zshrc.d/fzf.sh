@@ -7,7 +7,7 @@
 # bindkey '^@s' fzf-exec-ssh
 # bindkey '^\'  fzf-change-recent-directory
 bindkey '^r'  fzf-insert-history
-# bindkey '^xf' fzf-insert-files
+bindkey '^p' fzf-insert-files
 bindkey '^t' fzf-insert-directory
 # bindkey '^xn' fzf-insert-named-directory
 
