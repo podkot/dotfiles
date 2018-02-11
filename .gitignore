@@ -2,6 +2,5 @@ node_modules
 
 lib
 !lib/.gitkeep
-bin/dropboxes.sh
 bin/subl
 bin/git-when-merged

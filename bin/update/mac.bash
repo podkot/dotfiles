@@ -20,3 +20,6 @@ brew prune
 # https://github.com/Homebrew/brew/issues/2356
 brew reinstall vim
 echo
+
+# subl command
+command_exists subl || ln -s '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' "$DOTFILES/bin/subl"
