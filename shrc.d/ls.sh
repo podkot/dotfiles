@@ -12,7 +12,7 @@ else
 fi
 
 # colored ls
-alias l="ls -lF ${colorflag}"
-alias la="ls -laF ${colorflag}"
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-alias ls="command ls ${colorflag}"
+alias l="ls -lFN ${colorflag}"
+alias la="ls -laFN ${colorflag}"
+alias lsd="ls -lFN ${colorflag} | grep --color=never '^d'"
+alias ls="command ls -FN ${colorflag}"
