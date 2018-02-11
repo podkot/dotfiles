@@ -299,6 +299,7 @@ ExtUtils::MakeMaker::CPANfile
 ExtUtils::ParseXS
 FCGI
 FCGI::ProcManager
+FIAS::SQL
 Fennec::Lite
 File
 File::ChangeNotify
@@ -341,6 +342,7 @@ Google::Charts
 HTML::Form
 HTML::FormHandler
 HTML::FormHandler::Model::DBIC
+HTML::ParseBrowser
 HTML::Parser
 HTML::Stream
 HTML::Tagset
@@ -380,6 +382,7 @@ IO::Socket::Timeout
 IO::String
 IO::Stringy
 IO::Tty
+IPC::Run
 IPC::Run3
 IPC::Shareable
 Imager
@@ -390,6 +393,7 @@ JSON
 JSON::Any
 JSON::MaybeXS
 JSON::PP
+JSON::Tiny
 JSON::XS
 JavaScript::Console
 LWP
@@ -811,6 +815,7 @@ WWW::Yahoo::InboundLinks
 WWW::Yandex::TIC
 Want
 WebService::CEPH
+XBase
 XML::Declare
 XML::Fast
 XML::Hash::LX
