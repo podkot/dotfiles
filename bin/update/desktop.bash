@@ -52,6 +52,7 @@ if command_exists npm ; then
     # npm install -g karma-cli
     # npm install -g github-release-from-changelog
     npm install -g flow-bin
+    npm install -g jest
     npm install -g mocha
     npm install -g coffee
     npm install -g coffeelint
@@ -71,6 +72,10 @@ if command_exists npm ; then
 
     npm install -g eslint
     npm install -g eslint-plugin-regru
+    npm install -g eslint-plugin-shopify
+    npm install -g eslint-plugin-promise
+    npm install -g eslint-plugin-compat
+    npm install -g eslint-plugin-vue
     npm install -g babel-eslint
 
     npm install -g yo

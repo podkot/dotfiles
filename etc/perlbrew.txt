@@ -165,6 +165,7 @@ Crypt::Primes
 Crypt::RC4
 Crypt::RSA
 Crypt::Random
+Crypt::Random::Source
 Crypt::Rijndael
 Crypt::SSLeay
 Crypt::URandom
@@ -453,6 +454,8 @@ Math::GMP
 Math::Int128
 Math::Int64
 Math::Pari
+Math::Random::ISAAC
+Math::Random::Secure
 Math::Round
 MaxMind::DB::Common
 MaxMind::DB::Reader
