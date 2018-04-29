@@ -10,7 +10,7 @@ export RUBY_VERSION=2.2
 export PHP_VERSION=7.1
 export PERL_VERSION=5.16.3
 export APACHE_VERSION=2.4
-export NODE_VERSION=8.9
+export NODE_VERSION=8.11
 export PYTHON_VERSION=2.7
 
 # stuff
