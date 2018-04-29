@@ -43,32 +43,28 @@ if command_exists npm ; then
     header "Installing/updating npm packages"
     npm config set loglevel warn
     npm config set save-prefix ''
+
     npm install -g npm
-    npm install -g grunt-cli
+    npm install -g yarn
     npm install -g bower
     npm install -g npm-check-updates
-    # npm install -g node-inspector
-    # npm install -g iron-node
-    # npm install -g karma-cli
-    # npm install -g github-release-from-changelog
-    npm install -g flow-bin
+
+    npm install -g webpack-cli
+    npm install -g grunt-cli
+    npm install -g gulp
+
     npm install -g jest
     npm install -g mocha
-    npm install -g coffee
-    npm install -g coffeelint
-    npm install -g gulp
-    npm install -g webpack
-    npm install -g jade-lint
-    npm install -g yarn
-    npm install -g tern
-    # npm install -g feathers-cli
-    # npm install -g sequelize-cli
-    npm install -g vue-cli
-    npm install -g caniuse-cmd
+    # npm install -g karma-cli
 
     npm install -g javascript-typescript-langserver
     npm install -g vue-language-server
-    npm install -g grateful
+    npm install -g tern
+
+    npm install -g flow-bin
+    npm install -g coffee
+    npm install -g coffeelint
+    npm install -g pug-lint
 
     npm install -g eslint
     npm install -g eslint-plugin-regru
@@ -78,8 +74,12 @@ if command_exists npm ; then
     npm install -g eslint-plugin-vue
     npm install -g babel-eslint
 
+    npm install -g vue-cli
     npm install -g yo
     npm install -g generator-generator
+
+    npm install -g caniuse-cmd
+    npm install -g grateful
 fi
 
 # ruby
