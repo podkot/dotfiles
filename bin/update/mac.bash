@@ -11,7 +11,7 @@ echo
 header "Updating Homebrew"
 # sudo -v
 brew update
-brew upgrade --all
+brew upgrade
 brew cleanup
 brew cask cleanup
 brew cask list | xargs brew cask install #--force

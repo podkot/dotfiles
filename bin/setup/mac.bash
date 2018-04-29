@@ -4,7 +4,7 @@
 header "Installing and updating Homebrew"
 command_exists brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
-brew upgrade --all
+brew upgrade
 brew doctor
 echo
 
