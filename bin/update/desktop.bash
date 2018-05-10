@@ -65,6 +65,9 @@ if command_exists npm ; then
     npm install -g coffee
     npm install -g coffeelint
     npm install -g pug-lint
+    npm install -g markdownlint-cli
+    npm install -g less
+    npm install -g bemlint
 
     npm install -g eslint
     npm install -g eslint-plugin-regru
