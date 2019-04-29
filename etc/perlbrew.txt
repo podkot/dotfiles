@@ -241,6 +241,7 @@ Devel::CheckCompiler
 Devel::CheckLib
 Devel::CheckOS
 Devel::Confess
+Devel::Cover
 Devel::Cycle
 Devel::GlobalDestruction
 Devel::Hide
@@ -370,6 +371,7 @@ Hash::MultiValue
 Heap
 Hook::LexWrap
 IO::All
+IO::Callback
 IO::Capture
 IO::CaptureOutput
 IO::Event
@@ -394,6 +396,7 @@ JSON
 JSON::Any
 JSON::MaybeXS
 JSON::PP
+JSON::RPC2
 JSON::Tiny
 JSON::XS
 JavaScript::Console
@@ -524,6 +527,7 @@ MooseX::Types::URI
 Mouse
 Mozilla::CA
 MySQL::Insert
+Net::AMQP::RabbitMQ
 Net::Address::Ethernet
 Net::Address::IP::Local
 Net::Amazon::S3
@@ -631,6 +635,9 @@ Readonly
 Readonly::XS
 Redis
 Redis::Fast
+Reg::Auth
+Reg::JWT
+Reg::Zone
 Regexp::Assemble
 Regexp::Assemble::Compressed
 Regexp::Common

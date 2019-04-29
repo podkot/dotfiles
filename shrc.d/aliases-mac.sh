@@ -1,7 +1,7 @@
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias flushdns="sudo killall -HUP mDNSResponder; sleep 2; echo macOS DNS Cache Reset | say"
 
 # delete local time machine snapshots
 # https://forums.macrumors.com/threads/how-to-delete-time-machine-local-backups-on-high-sierra.2073998/

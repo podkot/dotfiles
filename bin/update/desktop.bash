@@ -17,12 +17,14 @@ fi
 
 if command_exists pip2 ; then
     header "Updating pip2"
+    unset PYTHONPATH
     pip2 install -U pip
     pip2 install -U psutil
 fi
 
 if command_exists pip3 ; then
     header "Updating pip3"
+    unset PYTHONPATH
     pip3 install -U pip
     pip3 install -U pyyaml
     pip3 install -U bashate
@@ -48,6 +50,7 @@ if command_exists npm ; then
     npm install -g yarn
     npm install -g bower
     npm install -g npm-check-updates
+    npm install -g np
 
     npm install -g webpack-cli
     npm install -g grunt-cli

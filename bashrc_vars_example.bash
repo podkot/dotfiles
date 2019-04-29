@@ -7,10 +7,10 @@ export PROMPT_LAST_COMMAND_TIME=true
 
 # versions
 export RUBY_VERSION=2.2
-export PHP_VERSION=7.1
+export PHP_VERSION=7.3
 export PERL_VERSION=5.16.3
 export APACHE_VERSION=2.4
-export NODE_VERSION=8.11
+export NODE_VERSION=10
 export PYTHON_VERSION=2.7
 
 # stuff
