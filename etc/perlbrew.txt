@@ -6,6 +6,7 @@ API::Plesk
 API::PleskExpand
 Algorithm::Bayesian
 Algorithm::C3
+Algorithm::Combinatorics
 Algorithm::Diff
 Algorithm::NGram
 Any::URI::Escape
@@ -807,6 +808,7 @@ UNIVERSAL::isa
 UNIVERSAL::require
 URI
 URI::Encode
+URI::Escape::XS
 URI::Find
 URI::FromHash
 URI::ws

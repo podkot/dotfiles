@@ -11,6 +11,7 @@
 # pip
 if command_exists pip ; then
     header "Updating pip"
+    unset PYTHONPATH
     pip install -U pip
     pip install -U psutil
 fi
@@ -29,6 +30,7 @@ if command_exists pip3 ; then
     pip3 install -U pyyaml
     pip3 install -U bashate
     pip3 install -U licen
+    pip3 install -U touchbar_lyric
     #pip3 install -U numpy scipy pandas
     #pip3 install -U scikit-learn matplotlib
     #pip3 install -U jupyter
@@ -83,6 +85,9 @@ if command_exists npm ; then
     npm install -g vue-cli
     npm install -g yo
     npm install -g generator-generator
+
+    npm install -g prisma
+    npm install -g graphql-cli
 
     npm install -g caniuse-cmd
     npm install -g grateful
