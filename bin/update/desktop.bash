@@ -17,7 +17,6 @@ if command_exists pip ; then
     pip install -U pyyaml
     pip install -U bashate
     pip install -U licen
-    pip install -U touchbar_lyric
     #pip install -U numpy scipy pandas
     #pip install -U scikit-learn matplotlib
     #pip install -U jupyter
@@ -44,8 +43,6 @@ if command_exists npm ; then
     npm install -g gulp
 
     npm install -g jest
-    npm install -g mocha
-    # npm install -g karma-cli
 
     npm install -g javascript-typescript-langserver
     npm install -g vue-language-server
@@ -69,21 +66,6 @@ if command_exists npm ; then
 
     npm install -g vue-cli
     npm install -g caniuse-cmd
-fi
-
-# ruby
-if command_exists ruby-install; then
-    header "Updating ruby"
-    which ruby | grep $RUBY_VERSION. || ruby-install ruby $RUBY_VERSION
-    echo
-
-    # gems
-    if command_exists gem; then
-        header "Updating ruby gems"
-        command_exists bundler || gem install bundler
-        gem update
-        echo
-    fi
 fi
 
 # composer

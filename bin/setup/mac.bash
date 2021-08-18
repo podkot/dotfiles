@@ -13,6 +13,6 @@ brew bundle --global
 echo
 
 # bash 4
-grep /usr/local/bin/bash /etc/shells || echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
-sudo chsh -s /usr/local/bin/bash
+#grep /usr/local/bin/bash /etc/shells || echo "/usr/local/bin/bash" | sudo tee -a /etc/shells
+#sudo chsh -s /usr/local/bin/bash
 

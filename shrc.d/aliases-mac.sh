@@ -1,6 +1,3 @@
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
 alias flushdns="sudo killall -HUP mDNSResponder; sleep 2; echo macOS DNS Cache Reset | say"
 
 # delete local time machine snapshots

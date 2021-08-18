@@ -5,7 +5,6 @@
 - [shell](#shell)
     - [bash](#bash)
     - [fzf](#fzf)
-    - [marker](#marker)
 - [tig](#tig)
 - [vim](#vim)
     - [General bindings:](#general-bindings)

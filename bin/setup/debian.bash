@@ -6,7 +6,6 @@ sudo apt-get install -y vim
 sudo apt-get install -y zsh
 sudo apt-get install -y editorconfig
 sudo apt-get install -y mycli
-sudo apt-get install -y httpie
 sudo apt-get install -y git-extras
 
 # debian >= 8, ubuntu >= 13.10
