@@ -28,12 +28,12 @@ alias redis-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.pli
 alias redis-restart="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.plist && launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
 
 alias mysql-conf="$EDITOR /usr/local/etc/my.cnf.d/server.cnf"
-alias mysql-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist"
-alias mysql-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist"
-alias mysql-restart="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist && launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist"
+alias mysql-stop="brew services stop mariadb"
+alias mysql-start="brew services start mariadb"
+alias mysql-restart="brew services restart mariadb"
 
 
-alias phpini="$EDITOR /usr/local/etc/php/$PHP_VERSION/php.ini" # php -i | grep 'Configuration File'
+alias phpini="$EDITOR /usr/local/etc/php/8.0/php.ini" # php -i | grep 'Configuration File'
 alias vhosts="$EDITOR /usr/local/etc/httpd/extra/httpd-vhosts.conf"
 
 

@@ -14,26 +14,13 @@ if command_exists pip ; then
     unset PYTHONPATH
     pip install -U pip
     pip install -U psutil
-fi
-
-if command_exists pip2 ; then
-    header "Updating pip2"
-    unset PYTHONPATH
-    pip2 install -U pip
-    pip2 install -U psutil
-fi
-
-if command_exists pip3 ; then
-    header "Updating pip3"
-    unset PYTHONPATH
-    pip3 install -U pip
-    pip3 install -U pyyaml
-    pip3 install -U bashate
-    pip3 install -U licen
-    pip3 install -U touchbar_lyric
-    #pip3 install -U numpy scipy pandas
-    #pip3 install -U scikit-learn matplotlib
-    #pip3 install -U jupyter
+    pip install -U pyyaml
+    pip install -U bashate
+    pip install -U licen
+    pip install -U touchbar_lyric
+    #pip install -U numpy scipy pandas
+    #pip install -U scikit-learn matplotlib
+    #pip install -U jupyter
 fi
 
 # n node
@@ -50,8 +37,6 @@ if command_exists npm ; then
 
     npm install -g npm
     npm install -g yarn
-    npm install -g bower
-    npm install -g npm-check-updates
     npm install -g np
 
     npm install -g webpack-cli
@@ -83,14 +68,7 @@ if command_exists npm ; then
     npm install -g babel-eslint
 
     npm install -g vue-cli
-    npm install -g yo
-    npm install -g generator-generator
-
-    npm install -g prisma
-    npm install -g graphql-cli
-
     npm install -g caniuse-cmd
-    npm install -g grateful
 fi
 
 # ruby
@@ -116,9 +94,7 @@ if command_exists composer; then
     composer global require phpmd/phpmd
     composer global require squizlabs/php_codesniffer
     composer global require wp-cli/wp-cli
-    composer global require "aaemnnosttv/wp-cli-dotenv-command:^1.0"
-    #composer global require mkusher/padawan
-    composer global require symfony/thanks
+    composer global require aaemnnosttv/wp-cli-dotenv-command
 
     composer global update
     echo

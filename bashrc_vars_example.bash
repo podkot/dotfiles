@@ -6,12 +6,12 @@ export SCM_CHECK_HG=false
 export PROMPT_LAST_COMMAND_TIME=true
 
 # versions
-export RUBY_VERSION=2.2
-export PHP_VERSION=7.3
-export PERL_VERSION=5.16.3
+export RUBY_VERSION=2.6
+export PHP_VERSION=8.0
+export PERL_VERSION=5.24.0
 export APACHE_VERSION=2.4
-export NODE_VERSION=10
-export PYTHON_VERSION=2.7
+export NODE_VERSION=14
+export PYTHON_VERSION=3.9
 
 # stuff
 export DIGNS_DEFAULT_NS=8.8.8.8
