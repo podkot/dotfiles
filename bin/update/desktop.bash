@@ -93,7 +93,7 @@ if command_exists composer; then
     composer global require phpdocumentor/phpdocumentor
     composer global require phpmd/phpmd
     composer global require squizlabs/php_codesniffer
-    composer global require wp-cli/wp-cli
+    composer global require wp-cli/wp-cli-bundle
     composer global require aaemnnosttv/wp-cli-dotenv-command
 
     composer global update

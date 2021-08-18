@@ -6,11 +6,11 @@ export SCM_CHECK_HG=false
 export PROMPT_LAST_COMMAND_TIME=true
 
 # versions
-export RUBY_VERSION=2.6
+export RUBY_VERSION=3.0
 export PHP_VERSION=8.0
 export PERL_VERSION=5.24.0
 export APACHE_VERSION=2.4
-export NODE_VERSION=14
+export NODE_VERSION=16
 export PYTHON_VERSION=3.9
 
 # stuff
