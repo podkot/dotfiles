@@ -4,7 +4,7 @@
 # brew cask install font-firacode-nerd-font
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vcs dir dir_writable newline status root_indicator)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vcs dir dir_writable status root_indicator) # newline
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(history command_execution_time time context)
 
 #POWERLEVEL9K_SHOW_CHANGESET='true'
