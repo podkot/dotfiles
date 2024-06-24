@@ -36,28 +36,17 @@ if command_exists npm ; then
 
     npm install -g npm
     npm install -g yarn
-    npm install -g np
 
     npm install -g webpack-cli
-    npm install -g grunt-cli
-    npm install -g gulp
-
     npm install -g jest
 
     npm install -g javascript-typescript-langserver
     npm install -g vue-language-server
-    npm install -g tern
 
-    npm install -g flow-bin
-    npm install -g coffee
-    npm install -g coffeelint
-    npm install -g pug-lint
     npm install -g markdownlint-cli
     npm install -g less
-    npm install -g bemlint
 
     npm install -g eslint
-    npm install -g eslint-plugin-regru
     npm install -g eslint-plugin-shopify
     npm install -g eslint-plugin-promise
     npm install -g eslint-plugin-compat
@@ -65,7 +54,6 @@ if command_exists npm ; then
     npm install -g babel-eslint
 
     npm install -g vue-cli
-    npm install -g caniuse-cmd
 fi
 
 # composer
