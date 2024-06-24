@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-# perlbrew reinstall:
-# perlbrew list-modules | perlbrew exec --with perl-5.20.0@foo-project cpanm
-
-# if command_exists cpan-outdated; then
-#     # you will need to repeat this for every Perl you have installed under it
-#     cpan-outdated -p | cpanm
-# fi
-
 # pip
 if command_exists pip ; then
     header "Updating pip"
