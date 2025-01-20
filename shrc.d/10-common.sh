@@ -11,3 +11,5 @@ export TERM=xterm-256color
 export LANG=ru_RU.UTF-8 # otherwise powerline line wrapping doesn't work
 
 unset PYTHONPATH
+
+export PATH="~/.local/bin:$PATH"

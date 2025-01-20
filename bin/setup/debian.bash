@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo apt-get install -y language-pack-ru
 sudo apt-get install -y tig
 sudo apt-get install -y mc
 sudo apt-get install -y vim
